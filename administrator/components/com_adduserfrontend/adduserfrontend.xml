@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <extension type="component" version="2.5">
+    <name>Add user Frontend</name>
+    <extensionname>Add user Frontend</extensionname>
+    <author>Kim Pittoors</author>
+    <creationDate>2014/08/24</creationDate>
+    <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+    <authorEmail>info@joomlacy.com</authorEmail>
+    <authorUrl>http://www.joomlacy.com</authorUrl>
+    <version>1.3.7</version>
+    <description>Add users to Joomla from the frontend for Joomla 3.0</description>
+    <install>
+        <sql>
+           
+        </sql>
+    </install>
+ <!-- user part -->
+    <files source="site" folder="site">
+        <folder>models</folder>
+        <folder>views</folder>
+        <file>controller.php</file>
+        <file>index.html</file>
+        <file>adduserfrontend.php</file>
+    </files>
+	
+    
+    <scriptfile>install.adduserfrontend.php</scriptfile>
+    <scriptfile>uninstall.adduserfrontend.php</scriptfile>
+ 
+       <languages>
+		<language tag="en-GB">language/en-GB/en-GB.com_adduserfrontend.ini</language>
+           <language tag="fa-IR">language/fa-IR/fa-IR.com_adduserfrontend.ini</language>
+           <language tag="nl-NL">language/nl-NL/nl-NL.com_adduserfrontend.ini</language>
+                <language tag="sl-SL">language/sl-SL/sl-SL.com_adduserfrontend.ini</language>
+		<language tag="es-ES">language/es-ES/es-ES.com_adduserfrontend.ini</language>
+                <language tag="it-IT">language/it-IT/it-IT.com_adduserfrontend.ini</language>
+	</languages>
+   
+<administration>
+ 
+<menu link="com_adduserfrontend">ADD_USER_FRONTEND</menu>
+ 
+	
+   <files source="administrator/components" folder="administrator/components">
+        <folder>helpers</folder>
+        <folder>language</folder>	
+        <folder>models</folder>
+        <folder>tables</folder>
+        <folder>views</folder>
+        <file>config.xml</file>
+	<file>access.xml</file>
+        <file>controller.php</file>
+        <file>index.html</file>
+        <file>install.adduserfrontend.php</file>
+        <file>adduserfrontend.php</file>
+        <file>uninstall.adduserfrontend.php</file>
+    </files>
+     <languages folder="administrator/language/en-GB">
+        <language tag="en-GB">en-GB.com_adduserfrontend.menu.ini</language>
+        <language tag="en-GB">en-GB.com_adduserfrontend.sys.ini</language>        
+        <language tag="en-GB">en-GB.com_adduserfrontend.ini</language>
+    </languages>
+    </administration>
+</extension>

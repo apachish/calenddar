@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="captcha" method="upgrade">
+	<name>plg_captcha_abccaptcha</name>
+	<version>0.0.1</version>
+	<creationDate>March 2014</creationDate>
+	<author>Hadi Pourabbas</author>
+	<authorEmail>info@abccom.biz</authorEmail>
+	<authorUrl>http://www.abccom.biz</authorUrl>
+	<copyright>Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>PLG_CAPTCHA_ABCCAPTCHA_XML_DESC</description>
+	
+	<scriptfile>script.php</scriptfile>
+	
+	<files>
+		<filename plugin="abccaptcha">abccaptcha.php</filename>
+		<folder>language</folder>
+		<filename>index.html</filename>		
+		<filename>refresh.gif</filename>
+		<filename>ajaxrefresh.gif</filename>
+		<filename>script.js</filename>
+		<filename>stylesheet.css</filename>
+		<filename>script.php</filename>
+	</files>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_captcha_abccaptcha.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_captcha_abccaptcha.sys.ini</language>	
+		<language tag="fa-IR">fa-IR/fa-IR.plg_captcha_abccaptcha.ini</language>
+		<language tag="fa-IR">fa-IR/fa-IR.plg_captcha_abccaptcha.sys.ini</language>
+	</languages>	
+
+</extension>

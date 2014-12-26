@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>SP Social</name>
+	<author>JoomShaper.com</author>
+	<creationDate>Oct 2012</creationDate>
+	<copyright>Copyright (C) 2010 - 2013 JoomShaper.com. All rights reserved.</copyright>
+	<license>GNU/GPL V2 for PHP files. CSS / JS are Copyrighted Commercial</license>
+	<authorEmail>support@joomshaper.com</authorEmail>
+	<authorUrl>www.joomshaper.com</authorUrl>
+	<version>1.0.2</version>
+	<description>Simple Social Module for joomla 2.5</description>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_sp_social.ini</language>
+	</languages>	
+	<files>
+		<filename module="mod_sp_social">mod_sp_social.php</filename>
+		<folder>assets</folder>
+		<folder>tmpl</folder>
+		<filename>index.html</filename>
+	</files>	
+	<config>
+		 <fields name="params">
+			<fieldset name="basic">	
+				<field name="preset" type="list" default="default" label="Style">
+					<option value="default">Default</option>
+					<option value="magazine">Magazine</option>
+					<option value="financial-news">Financial News</option>
+					<option value="extreme">Extrem</option>
+				</field>
+				<field name="icon_size" type="list" default="32" label="Icon Size">
+					<option value="32">32 pixel</option>
+					<option value="16">16 pixel</option>
+				</field>			
+				<field name="rss" type="text" default="" label="RSS" description="RSS Link" />
+				<field name="facebook" type="text" default="" label="Facebook" description="Facebook username" />
+				<field name="twitter" type="text" default="" label="Twitter" description="Twitter username" />
+				<field name="goggleplus" type="text" default="" label="Google Plus" description="Google+ id" />
+				<field name="youtube" type="text" default="" label="YouTube" description="YouTube page" />
+				<field name="pinterest" type="text" default="" label="Pinterest" description="Pinterest username" />
+				<field name="linkedin" type="text" default="" label="LinkedIn" description="Linkedin id" />
+				<field name="flickr" type="text" default="" label="Flickr" description="Flicr page" />
+				<field name="picasa" type="text" default="" label="Picasa" description="Picasa" />
+				<field name="myspace" type="text" default="" label="mySpace" description="mySpace" />
+				<field name="digg" type="text" default="" label="Digg" description="Digg" />
+				<field name="skype" type="text" default="" label="Skype" description="Skype id" />
+				<field name="vimeo" type="text" default="" label="Vimeo" description="Vimeo page" />
+				<field name="delicious" type="text" default="" label="Delicious" description="Delicious" />
+				<field name="target" type="radio" default="target='_blank'" label="Target" class="btn-group">
+					<option value="target='_blank'">New Tab</option>
+					<option value="">Same Tab</option>
+				</field>
+				<field name="custom_text" type="text" default="" label="Custom Text" description="" />
+			</fieldset>
+				
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="text" default="" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field name="cachemode" type="hidden" default="itemid">
+					<option value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

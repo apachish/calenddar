@@ -1,0 +1,69 @@
+div.sp_social {}
+	div.sp_social ul {list-style:none;padding:0;margin:0}
+	div.sp_social ul li {display:inline-block;padding:0;margin:0 2px 2px 0;background:none}
+	div.sp_social ul li a {display:inline-block;padding:5px;margin:0;background:#fff;font-size:12px;border:1px solid #d0d0d0;text-decoration:none;}
+	div.sp_social ul li a:hover {background:none;text-decoration:none}
+	div.sp_social ul  li a span {display:block;width:18px;height:17px;background-color:none;background-repeat:no-repeat;background-position:0 -17px;text-indent:-9999em}
+	div.sp_social ul li a strong {font-weight:700;text-transform:uppercase;display:block;margin:0;padding-top:2px;margin-top:5px;border-top:2px solid #d8d8d8;color:#a8a8a8}
+	
+	/*Icons*/
+	div.sp_social ul li a.sp_social_rss span {background-image:url(../../images/extreme/rss.png)}
+	div.sp_social ul li a.sp_social_facebook span {background-image:url(../../images/extreme/facebook.png)}
+	div.sp_social ul li a.sp_social_twitter span {background-image:url(../../images/extreme/twitter.png)}
+	div.sp_social ul li a.sp_social_googleplus span {background-image:url(../../images/extreme/google_plus.png)}
+	div.sp_social ul li a.sp_social_linkedin span {background-image:url(../../images/extreme/linkedin.png)}
+	div.sp_social ul li a.sp_social_youtube span {background-image:url(../../images/extreme/youtube.png)}
+	div.sp_social ul li a.sp_social_pinterest span {background-image:url(../../images/extreme/pinterest.png)}
+	div.sp_social ul li a.sp_social_flickr span{background-image:url(../../images/extreme/flickr.png)}
+	div.sp_social ul li a.sp_social_picasa span{background-image:url(../../images/extreme/picasa.png)}
+	div.sp_social ul li a.sp_social_myspace span{background-image:url(../../images/extreme/myspace.png)}
+	div.sp_social ul li a.sp_social_digg span{background-image:url(../../images/extreme/digg.png)}
+	div.sp_social ul li a.sp_social_skype span{background-image:url(../../images/extreme/skype.png)}
+	div.sp_social ul li a.sp_social_vimeo span{background-image:url(../../images/extreme/vimeo.png)}
+	div.sp_social ul li a.sp_social_delicious span{background-image:url(../../images/extreme/delicious.png)}
+	
+	/*Hover*/
+	div.sp_social ul li a:hover span {background-position:0 0}
+	div.sp_social ul li a:hover strong {border-top:2px solid #fff;color:#fff}
+	div.sp_social ul li a.sp_social_rss:hover{background-color:#f78d06;border-color:#f78d06}
+	div.sp_social ul li a.sp_social_facebook:hover{background-color:#135ca8;border-color:#135ca8}
+	div.sp_social ul li a.sp_social_twitter:hover{background-color:#08e9f7;border-color:#08e9f7}
+	div.sp_social ul li a.sp_social_googleplus:hover{background-color:#cb3f30;border-color:#cb3f30}
+	div.sp_social ul li a.sp_social_linkedin:hover{background-color:#135ca8;border-color:#135ca8}
+	div.sp_social ul li a.sp_social_youtube:hover{background-color:#c8181b;border-color:#c8181b}
+	div.sp_social ul li a.sp_social_pinterest:hover{background-color:#dd1321;border-color:#dd1321}
+	div.sp_social ul li a.sp_social_flickr:hover{background-color:#ff0084;border-color:#ff0084}
+	div.sp_social ul li a.sp_social_picasa:hover{background-color:#9864ae;border-color:#9864ae}
+	div.sp_social ul li a.sp_social_myspace:hover{background-color:#003399;border-color:#003399}
+	div.sp_social ul li a.sp_social_digg:hover{background-color:#135ca8;border-color:#135ca8}
+	div.sp_social ul li a.sp_social_skype:hover{background-color:#01aef2;border-color:#01aef2}
+	div.sp_social ul li a.sp_social_vimeo:hover{background-color:#1c3341;border-color:#1c3341}
+	div.sp_social ul li a.sp_social_delicious:hover{background-color:#0005eb;border-color:#0005eb}
+	
+	/*rtl*/
+	.rtl div.sp_social ul li {margin:0 0 2px 2px}
+	
+	/*Animation*/
+	div.sp_social ul li a {
+		-webkit-transition: all 300ms;
+		-moz-transition: all 300ms;
+		-o-transition: all 300ms;
+		-ms-transition: all 300ms;
+		transition: all 300ms;
+	}
+
+	div.sp_social ul li a span {
+		-webkit-transition: background-position 300ms;
+		-moz-transition: background-position 300ms;
+		-o-transition: background-position 300ms;
+		-ms-transition: background-position 300ms;
+		transition: background-position 300ms;
+	}
+
+	div.sp_social ul li a strong {
+		-webkit-transition: all 300ms;
+		-moz-transition: all 300ms;
+		-o-transition: all 300ms;
+		-ms-transition: all 300ms;
+		transition: all 300ms;
+	}

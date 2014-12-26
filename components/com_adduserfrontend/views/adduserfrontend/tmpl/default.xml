@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Add user Frontend">
+		<message>
+			Component that makes it possible to add users from the frontend.
+		</message>
+	</layout>
+	
+<fields name="params">	
+	
+	<fieldset name="component" label="Add user Frontend" description="Change settings of Add user Frontend">	
+		
+		
+		
+		<field name="operationmode" type="list" label="Mode" description="If you also want to insert the user in Community Builder you have to pick: CB and Joomla. If you want to use it for joomla only, choose: Only Joomla.">
+		        <option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="1">CB and Joomla</option>
+				<option value="0">Only Joomla</option>
+			</field>
+	
+		
+			
+			<field name="namemode" type="list" label="Namemode" description="Use firstname and lastname or only one field for the whole name.">
+			    <option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="1">Firstname and Lastname</option>
+				<option value="0">Name</option>
+			</field>
+			
+			<field name="usernamemode" type="list" label="Username" description="Choose username manually?">
+			    <option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">Autogenerate username</option>
+				<option value="1">Choose username</option>
+				<option value="2">Use emailaddress as username</option>
+			</field>
+			
+			
+			<field name="unameexist" type="list" label="Check username" description="What do you want the component to do when the requested username already exists">
+			    <option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="1">Choose another username</option>
+				<option value="0">Rename and message</option>
+			</field>
+			
+			<field name="emailexist" type="list" label="Check email" description="Do you want to check for double emails?">
+			    <option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="1">Check for double emails</option>
+				<option value="0">Dont check for double emails</option>
+			</field>
+			
+			
+				<field name="passwordmode" type="list" label="Choose password" description="Choose password manually?.">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="1">Choose password</option>
+				<option value="0">Dont choose password</option>
+			</field>	
+			
+					<field name="genericemail" type="list" label="Choose email address" description="Do you want to fill in the emailaddress manually or automaticly create generic emailadresses?">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="1">Create generic emailaddresses</option>
+				<option value="0">Fill in email address</option>
+			</field>	
+			
+				<field name="notificationemail" type="list" label="Email notification" description="Do you want to send a notification email with the userdata to the emailaddress of the user that has been added to Joomla/CB ?">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">Dont send notification email</option>
+				<option value="1">Send notification email</option>
+			</field>
+			
+			<field name="adminnotificationemail" type="list" label="Admin email notification" description="Send an email to website administrator? (Sends an notification to the emailaddress in the global configuration: FROM EMAIL)">
+			    <option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">Dont send notification email to administrator</option>
+				<option value="1">Send notification email to administrator</option>
+			</field>
+			
+			<field name="usertypemode" type="list" label="Choose usertype mode" description="This option allows you to choose a usertype from the backend or show a usertype listbox in the frontend. If you set frontend, the fields: Default User Group and Custom Group, will not be considered!">
+			     <option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">Backend</option>
+				<option value="1">Frontend</option>
+			</field>
+			
+			<field name="hiddenusertype" type="list" label="Hide standard usergroups" description="This option, if enabled, hides from the listbox of usertype selection (only in the Frontend) all of the default joomla groups (like administrator, registered and other group with id from 1 to 8 managed by Joomla)!">
+				 <option value="">JGLOBAL_USE_GLOBAL</option>
+				 <option value="1">Yes, Hide</option>
+				<option value="0">No, Show</option>
+			</field>
+						
+			
+			
+			
+					<field name="setusertype" type="list" label="Usertype" description="Which type of user do you want to add? BE CAREFULL WHEN YOU CHOOSE USERTYPES WITH A LOT OF PERMISSIONS!">
+					
+				<option value="">JGLOBAL_USE_GLOBAL</option>				
+	                        <option value="100">Custom Group</option>
+				<option value="2">Registered</option>
+				<option value="3">Author</option>
+				<option value="4">Editor</option>
+				<option value="5">Publisher</option>
+				<option value="6">Manager</option>
+				<option value="7">Administrator</option>
+			</field>	
+			
+			
+			<field name="custumgroup" type="text" default="" label="Custom Group" description="Enter the ID of the usergroup to which you want to add the new user. TO USE THIS OPTION! - Set the usertype field above to: Custom Group. BE CAREFULL WHEN YOU CHOOSE USERTYPES WITH A LOT OF PERMISSIONS!" size="5" />
+						
+	</fieldset>
+	
+	</fields>
+	
+</metadata>

@@ -1,0 +1,68 @@
+/*---------------------------------------------------------------
+# Package - Joomla Template based on Helix Framework   
+# ---------------------------------------------------------------
+# Author - JoomShaper http://www.joomshaper.com
+# Copyright (C) 2010 - 2012 JoomShaper.com. All Rights Reserved.
+# license - PHP files are licensed under  GNU/GPL V2
+# license - CSS  - JS - IMAGE files  are Copyrighted material 
+# Websites: http://www.joomshaper.com
+-----------------------------------------------------------------*/
+a{color:#4bb587}
+a:hover,a:active,a:focus{color:#585858}
+/*logo*/
+a#logo{background:url(../../images/styles/style2/logo.png) no-repeat}
+/*main menu*/
+#hornav{background:#4bb587}
+/*Parent anchor text*/
+#hornav ul.level-0 > li.menu-item > a.menu-item,
+#sublevel ul.level-1 > li.menu-item > a.menu-item{color:#fff}
+
+#hornav ul.level-0 > li.menu-item.active > a.menu-item,#hornav ul.level-0 > li.menu-item:hover > a.menu-item,
+#sublevel ul.level-1 > li.menu-item.active > a.menu-item,#sublevel ul.level-1 > li.menu-item:hover > a.menu-item,
+#hornav li.menu-item li:hover > a,#hornav li.menu-item li.active > a,
+#sublevel li.menu-item li:hover > a,#sublevel li.menu-item li.active > a {color:#4bb587}
+
+/*login*/
+a.login_link:hover{background-color:#4bb587;border-color:#68cfa2;}
+/*news show sp 2 press digest,investment banking*/
+.module.link  .nssp2 .ns2-links-wrap  h4.ns2-title a{background:url(../../images/styles/style2/circle_bg.png) no-repeat 0 6px}
+.rtl .module.link  .nssp2 .ns2-links-wrap  h4.ns2-title a{background:url(../../images/styles/style2/circle_bg.png) no-repeat 100% 6px!important}  
+/*news show sp 2 headline*/
+.nssp2 .ns2-art-prev{background:url(../../images/styles/style1/l_arrow.png) no-repeat 0 4px}
+.rtl .nssp2 .ns2-art-prev{background:url(../../images/styles/style1/rtl_r_arrow.png) no-repeat 0 4px}
+.nssp2 .ns2-art-prev:hover{background:url(../../images/styles/style1/l_arrow_h.png) no-repeat 0 4px}
+.rtl .nssp2 .ns2-art-prev:hover{background:url(../../images/styles/style1/rtl_r_arrow_h.png) no-repeat 0 4px}
+.nssp2 .ns2-art-next{background:url(../../images/styles/style1/r_arrow.png) no-repeat 0 4px}
+.rtl .nssp2 .ns2-art-next{background:url(../../images/styles/style1/rtl_l_arrow.png) no-repeat 0 4px}
+.nssp2 .ns2-art-next:hover{background:url(../../images/styles/style1/r_arrow_h.png) no-repeat 0 4px}
+.rtl .nssp2 .ns2-art-next:hover{background:url(../../images/styles/style1/rtl_l_arrow_h.png) no-repeat 0 4px}
+/*news show sp2 commentary*/
+.module.highlighted  .nssp2 .ns2-art-prev{background:url(../../images/styles/style2/l_arrow_b.png) no-repeat 0 4px}
+.rtl .module.highlighted    .nssp2 .ns2-art-prev{background:url(../../images/styles/style2/rtl_r_arrow_b.png) no-repeat 0 4px}
+.module.highlighted  .nssp2 .ns2-art-prev:hover{background:url(../../images/styles/style2/l_arrow_b_h.png) no-repeat 0 4px}
+.rtl .module.highlighted    .nssp2 .ns2-art-prev:hover{background:url(../../images/styles/style2/rtl_r_arrow_b_h.png) no-repeat 0 4px}
+.module.highlighted  .nssp2 .ns2-art-next{background:url(../../images/styles/style2/r_arrow_b.png) no-repeat 0 4px}
+.rtl .module.highlighted    .nssp2 .ns2-art-next{background:url(../../images/styles/style2/rtl_l_arrow_b.png) no-repeat 0 4px}
+.module.highlighted  .nssp2 .ns2-art-next:hover{background:url(../../images/styles/style2/r_arrow_b_h.png) no-repeat 0 4px}
+.rtl .module.highlighted    .nssp2 .ns2-art-next:hover{background:url(../../images/styles/style2/rtl_l_arrow_b_h.png) no-repeat 0 4px}
+/*sp-stock*/
+.module.gray .sp-stock .sp-stock-symbol,
+.module.gray .sp-stock .sp-stock-price {color:#afafaf!important;}
+.module.gray .sp-stock ul li  span{color:#36b621!important}
+.module.gray .sp-stock ul li:last-child  span{color:#d63232!important}
+/*smart slider*/
+.nivoSlider .nivo-prevNav{background:url(../../images/styles/style2/arrow_slide_l.png) no-repeat!important;}
+.nivoSlider .nivo-nextNav{background:url(../../images/styles/style2/arrow_slide_r.png) no-repeat!important;}
+/*news show sp2 latest update*/
+.module.highlighted.title-ticker h3.header{background:#89d1b2!important;}
+/*sp tab*/
+ul.tabs_container li.tab.active{color:#4bb587}
+/*k2*/
+div.itemRelated ul li,div.itemAuthorLatest ul li {background:url(../../images/styles/style2/circle_bg.png) no-repeat 0 10px}
+.rtl div.itemRelated ul li,.rtl div.itemAuthorLatest ul li {background:url(../../images/styles/style2/circle_bg.png) no-repeat 100% 10px!important}
+div.subCategory ul li {background:url(../../images/styles/style2/circle_bg.png) no-repeat 0 10px}
+.rtl div.subCategory ul li {background:url(../../images/styles/style2/circle_bg.png) no-repeat 100% 10px!important}
+/*module highlighted*/
+.module.highlighted    .mod-wrapper {background-color:#4bb587;color:#C4E3FC;text-shadow:0 1px rgba(0, 0, 0, 0.21)}
+.module.highlighted   .mod-wrapper h3.header{border-bottom: 1px solid #61cb9d}
+.module.highlighted    .mod-wrapper h3.header span{color:#fff}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="user" version="3.0" method="upgrade">
+	<name>User - Login One!</name>
+	<author>INNATO BV</author>
+	<creationDate>Oct 2014</creationDate>
+	<copyright>This plugin is released under the GNU/GPLv3 License</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorUrl>www.innato.nl</authorUrl>
+	<version>1.3.9.2</version>
+	<description>PLUGIN_DESCRIPTION</description>
+	
+	<!-- Runs on install/uninstall/update; New in 1.6 -->
+	<scriptfile>script.php</scriptfile>
+	
+	<update> <!-- Runs on update; New in 1.6 -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<files>
+		<filename plugin="loginone_user">changelog.php</filename>
+		<filename plugin="loginone_user">loginone_user.php</filename>
+		<filename plugin="loginone_user">LICENSE.pdf</filename>
+		<filename plugin="loginone_user">script.php</filename>
+		<folder plugin="loginone_user">classes/</folder>
+		<folder plugin="loginone_user">images/</folder>
+		<folder plugin="loginone_user">sql/</folder>
+	</files>
+
+  <languages>
+    <language tag="en-GB">language/en-GB/en-GB.plg_user_loginone_user.ini</language>
+    <language tag="en-GB">language/en-GB/en-GB.plg_user_loginone_user.sys.ini</language>
+  </languages>
+	<config>
+		<fields name="params">
+		
+			<fieldset name="basic">
+				<field name="strong_passwords" type="radio"
+					class="btn-group btn-group-yesno"
+					default="1"
+					label="PLG_USER_STRONG_PASSWORDS"
+					description="PLG_USER_STRONG_PASSWORDS_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="autoregister" type="radio"
+					class="btn-group btn-group-yesno"
+					default="1"
+					label="PLG_USER_AUTOREGISTER"
+					description="PLG_USER_AUTOREGISTER_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="mail_to_user"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="1"
+					label="PLG_USER_MAILTOUSER"
+					description="PLG_USER_MAILTOUSER_DESC"
+				>
+					<option
+						value="0">JNO</option>
+					<option
+						value="1">JYES</option>
+				</field>
+			</fieldset>
+
+		</fields>
+	</config>
+</extension>

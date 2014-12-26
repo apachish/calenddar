@@ -1,0 +1,91 @@
+/*---------------------------------------------------------------
+# Package - Joomla Template based on Helix Framework   
+# ---------------------------------------------------------------
+# Author - JoomShaper http://www.joomshaper.com
+# Copyright (C) 2010 - 2012 JoomShaper.com. All Rights Reserved.
+# license - PHP files are licensed under  GNU/GPL V2
+# license - CSS  - JS - IMAGE files  are Copyrighted material 
+# Websites: http://www.joomshaper.com
+-----------------------------------------------------------------*/
+#hornav,#sublevel {position:relative}
+#hornav ul.sp-menu { padding: 0;margin:0}
+#sublevel ul.sp-menu { padding: 5px 0}
+#hornav .megacol,#sublevel .megacol {float:left}
+#sublevel ul.empty,#sublevel li.empty {height:0px!important;display:none} 
+#hornav ul li,#sublevel ul li{background:none;padding:0;margin:0} 
+
+/*Top Level*/
+#sublevel {background:#222}
+
+#hornav ul.level-0,
+#sublevel ul.level-1{float:none;display:inline-block;margin:0 8px;padding:0}
+
+/*Parent list item*/
+#hornav ul.level-0 > li.menu-item,
+#sublevel ul.level-1 > li.menu-item{background:none;display:inline-block;margin:0 1px;padding:0}
+
+/*Parent anchor text*/
+#hornav ul.level-0 > li.menu-item > a.menu-item,
+#sublevel ul.level-1 > li.menu-item > a.menu-item{display:block;font-size:14px;line-height:normal;text-decoration:none;margin:0;padding:13px 10px}
+
+/*Parent list item hover and active*/
+#hornav ul.level-0 > li.menu-item:hover > a.menu-item,
+#hornav ul.level-0 > li.menu-item.active> a.menu-item,
+#sublevel ul.level-1 > li.menu-item:hover > a.menu-item,
+#sublevel ul.level-1 > li.menu-item.active> a.menu-item{background:#fff;border-top:1px solid #d8d8d8;margin:-10px 0 0;padding-top:20px;padding-bottom:15px}
+
+#sublevel ul.level-1 > li.menu-item:hover > a.menu-item,
+#sublevel ul.level-1 > li.menu-item.active> a.menu-item {padding:13px 10px}
+
+#hornav ul.level-0 > li.menu-item.parent:hover > a.menu-item ,
+#sublevel ul.level-1 > li.menu-item.parent:hover > a.menu-item {background-color:#222;color:#ababab;text-shadow:0 1px #000}
+
+#hornav ul.level-0 > li.menu-item span.has-image,
+#sublevel ul.level-1 > li.menu-item span.has-image{padding-left:18px;display:block;background-repeat:no-repeat;background-position:0 50%}
+#hornav ul.level-0 > li.menu-item span.menu-title,
+#sublevel ul.level-1 > li.menu-item span.menu-title{display:block}
+
+#hornav ul.level-0 > li.menu-item span.menu-desc,
+#sublevel ul.level-1 > li.menu-item span.menu-desc{display:block;font-weight:400;font-size:92%;color:#888}
+
+#hornav ul.level-0 > li.parent > a.menu-item span.menu,
+#sublevel ul.level-1 > li.parent > a.menu-item span.menu {display:block;background: none}
+
+#hornav ul li.parent > a.menu-item span.menu,
+#sublevel ul li.parent > a.menu-item span.menu {display:block;background:url(../images/daddy.png) no-repeat 100% 50%}
+
+/*Submenu*/
+#hornav li .submenu,#sublevel li .submenu {position: absolute;display:none;z-index:9999}
+#hornav ul li .submenu-inner,#sublevel ul li .submenu-inner {background:#222;color:#ababab}
+
+/*Styling subnav*/
+#hornav ul ul,
+#sublevel ul ul {float: none;}
+
+#hornav li.menu-item li.menu-item,
+#sublevel li.menu-item li.menu-item {background:none;display:block;margin:0;padding:0;float:none;border-top:1px solid #111;border-bottom:1px solid #333}
+
+#hornav li.menu-item li.menu-item:first-child,
+#sublevel li.menu-item li.menu-item:first-child{border-top:0}
+#hornav li.menu-item li.menu-item:last-child,
+#sublevel li.menu-item li.menu-item:last-child{border-bottom:0}
+
+#hornav li.menu-item li.menu-item a.menu-item,
+#sublevel li.menu-item li.menu-item a.menu-item
+{display:block;font-weight:200;line-height:normal;text-decoration:none;margin:0;padding:10px;color:#ababab;text-shadow:0 1px #000}
+
+#hornav li.menu-item li:hover,#hornav li.menu-item li.active,
+#sublevel li.menu-item li:hover,#sublevel li.menu-item li.active{background:#000}
+
+#hornav li.menu-item li.menu-item span.menu-desc,
+#sublevel li.menu-item li.menu-item span.menu-desc{color:#666}
+
+/*Group*/
+* html .group{height:0}
+#hornav .group {padding:10px;}
+#hornav .group .group-title {margin-top:-10px;}
+#hornav ul li.menu-item .group{background:none!important;overflow:hidden}
+#hornav .group-content ul.sp-menu{margin:0!important}
+#hornav .group-title{margin:0;border-bottom:4px solid #333;padding:0;overflow:hidden}
+#hornav .group-title .menu-title{font-size:100%;font-weight:400;line-height:normal;text-transform:uppercase}
+#hornav .group-title .menu-desc{color:#888;padding-left:0!important}

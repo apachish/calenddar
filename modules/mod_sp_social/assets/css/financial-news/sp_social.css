@@ -1,0 +1,46 @@
+div.sp_social {}
+	div.sp_social ul {list-style:none;padding:0;margin:0}
+	div.sp_social ul li {display:inline-block;padding:0;margin:0 2px 2px 0;background:none}
+	div.sp_social ul li a {display:inline-block;padding:0;margin:0;}
+	div.sp_social ul li a:hover {background:none;text-decoration:none}
+	div.sp_social ul  li a span {display:block;width:36px;height:34px;background-color:none;background-repeat:no-repeat;background-position:0 0;text-indent:-9999em}
+	div.sp_social ul li a strong {display:none}
+	
+	/*Icons*/
+	div.sp_social ul li a.sp_social_rss span {background-image:url(../../images/financial-news/rss.png)}
+	div.sp_social ul li a.sp_social_facebook span {background-image:url(../../images/financial-news/facebook.png)}
+	div.sp_social ul li a.sp_social_twitter span {background-image:url(../../images/financial-news/twitter.png)}
+	div.sp_social ul li a.sp_social_googleplus span {background-image:url(../../images/financial-news/google_plus.png)}
+	div.sp_social ul li a.sp_social_linkedin span {background-image:url(../../images/financial-news/linkedin.png)}
+	div.sp_social ul li a.sp_social_youtube span {background-image:url(../../images/financial-news/youtube.png)}
+	div.sp_social ul li a.sp_social_pinterest span {background-image:url(../../images/financial-news/pinterest.png)}
+	div.sp_social ul li a.sp_social_flickr span{background-image:url(../../images/financial-news/flickr.png)}
+	div.sp_social ul li a.sp_social_picasa span{background-image:url(../../images/financial-news/picasa.png)}
+	div.sp_social ul li a.sp_social_myspace span{background-image:url(../../images/financial-news/myspace.png)}
+	div.sp_social ul li a.sp_social_digg span{background-image:url(../../images/financial-news/digg.png)}
+	div.sp_social ul li a.sp_social_skype span{background-image:url(../../images/financial-news/skype.png)}
+	div.sp_social ul li a.sp_social_vimeo span{background-image:url(../../images/financial-news/vimeo.png)}
+	div.sp_social ul li a.sp_social_delicious span{background-image:url(../../images/financial-news/delicious.png)}
+	
+	/*Hover*/
+	div.sp_social ul li a:hover span {background-position:0 -34px}
+	
+	/*rtl*/
+	.rtl div.sp_social ul li {margin:0 0 2px 2px}
+	
+	/*Animation*/
+	div.sp_social ul li a {
+		-webkit-transition: all 200ms;
+		-moz-transition: all 200ms;
+		-o-transition: all 200ms;
+		-ms-transition: all 200ms;
+		transition: all 200ms;
+	}
+
+	div.sp_social ul li a span {
+		-webkit-transition: background-position 200ms;
+		-moz-transition: background-position 200ms;
+		-o-transition: background-position 200ms;
+		-ms-transition: background-position 200ms;
+		transition: background-position 200ms;
+	}

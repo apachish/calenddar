@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="authentication" version="3.0" method="upgrade">
+	<name>Authentication - Login One!</name>
+	<author>INNATO BV</author>
+	<creationDate>Oct 2014</creationDate>
+	<copyright>This plugin is released under the GNU/GPLv3 License</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorUrl>www.innato.nl</authorUrl>
+	<version>1.3.9.2</version>
+	<description>PLUGIN_DESCRIPTION</description>
+	
+	<!-- Runs on install/uninstall/update; New in 1.6 -->
+	<scriptfile>script.php</scriptfile>
+	
+	<update> <!-- Runs on update; New in 1.6 -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<files>
+		<filename plugin="loginone">changelog.php</filename>
+		<filename plugin="loginone">loginone.php</filename>
+		<filename plugin="loginone">LICENSE.pdf</filename>
+		<filename plugin="loginone">script.php</filename>
+		<folder plugin="loginone">classes/</folder>
+		<folder plugin="loginone">images/</folder>
+		<folder plugin="loginone">sql/</folder>
+	</files>
+  <languages>
+    <language tag="en-GB">language/en-GB/en-GB.plg_authentication_loginone.ini</language>
+    <language tag="en-GB">language/en-GB/en-GB.plg_authentication_loginone.sys.ini</language>
+  </languages>
+
+<config>
+	<fields name="params">
+	<fieldset name="basic">
+	<field name="strict_mode" type="list" default="0" label="STRICT_MODE" description="STRICT_MODE_DESC" >
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+	</field>
+	</fieldset>
+	</fields>
+</config>
+
+</extension>

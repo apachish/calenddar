@@ -1,0 +1,110 @@
+/*---------------------------------------------------------------
+# Package - Joomla Template based on Helix Framework   
+# ---------------------------------------------------------------
+# Author - JoomShaper http://www.joomshaper.com
+# Copyright (C) 2010 - 2012 JoomShaper.com. All Rights Reserved.
+# license - PHP files are licensed under  GNU/GPL V2
+# license - CSS  - JS - IMAGE files  are Copyrighted material 
+# Websites: http://www.joomshaper.com
+-----------------------------------------------------------------*/
+
+/*Common*/
+h1,h2,h3,h4,ul.tabs_container li.tab
+ {
+	font-family:Open Sans;
+	font-weight:300;
+}
+
+#sp-share .sp-inner,
+#sp-banner .sp-inner {
+	padding:0;
+}
+
+/*date*/
+.sp_date{float:right;color:#6f6f6f;margin-top:8px}
+/*sp tab*/
+.tab-padding{border:1px solid #f5f5f5}
+.tabs_buttons{position:relative;margin-bottom:-1px!important;z-index:999}
+ul.tabs_container li.tab {border:1px solid #fff;border-bottom-color:#f5f5f5;padding:0 20px!important}
+ul.tabs_container li.tab.active{border:1px solid #f5f5f5;border-bottom-color:#fff}
+ul.tabs_container li span{font-size:18px}
+
+
+/*Login*/
+a.login_link {
+	float:right;
+	width:34px;
+	height:32px;
+	background:#e6e6e6 url(../images/login_lock.png) no-repeat 0 0;
+	border:1px solid #b9b9b9;
+	box-shadow: 0 0 1px #fff inset;
+	-webkit-box-shadow: 0 0 1px #fff inset;
+	border-radius:2px;
+	text-indent:-999em;
+	-webkit-transition: all 300ms;
+	outline:0;
+}
+a.login_link:hover {
+	background-position:0 -32px;
+	box-shadow:none;
+	-webkit-box-shadow:none;	
+}
+
+#login.modal {
+	outline:0;
+	left:50%!important;
+	width:300px;
+	margin-left:-150px;
+}
+
+/* all news show sp2 common */
+.nssp2 .ns2-art-controllers{position:absolute;right:0px;top:3px}
+.highlighted .nssp2 .ns2-art-controllers {right:10px;top:13px}
+.nssp2 .ns2-art-next,.nssp2 .ns2-art-prev{width:13px ;height:auto;margin: 0 2px;text-indent:-9999em}
+.nssp2 .ns2-art-wrap  h4.ns2-title{font-size:14px!important;margin:0!important}
+.nssp2 .ns2-links-wrap  h4.ns2-title{margin:0!important;font-weight: normal!important;} 
+/*commentary news show sp2*/
+.nssp2.ns2-highlighted .ns2-inner {position:relative}
+.nssp2.ns2-highlighted .ns2-art-wrap h4.ns2-title {
+	background: rgba(255, 255, 255, 0.71);
+	position: absolute;
+	height: 40px;
+	overflow: hidden;
+	padding: 5px;
+	bottom: -50px;
+	margin: 0 8px 0 5px!important;
+	font-weight: 400;
+	font-size: 12px!important;
+	color: black;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.39);
+	opacity:0;
+}
+
+.nssp2.ns2-highlighted .ns2-inner:hover h4.ns2-title {
+	opacity:1;
+	bottom:5px;
+}
+
+/*news show sp 2 press digest,investment banking*/
+.module.link  .nssp2 .ns2-links-wrap  h4.ns2-title a{padding-left:10px}
+.rtl .module.link  .nssp2 .ns2-links-wrap  h4.ns2-title a{padding-right:10px}
+/*sp stock */
+.module.gray .sp-stock .sp-stock-symbol,
+.module.gray .sp-stock .sp-stock-price {font-weight:normal!important}
+/*news show sp2 news left1*/
+.module.separator .ns2-wrap{background:url(../images/h3_bg.png) repeat-X 0 100%;padding-bottom: 10px;}
+
+/*news show sp2 latest update*/
+.module.highlighted.title-ticker h3.header{position:absolute;left:0;width:90px;color:#fff!important;padding:5px 0!important;text-align: center;border-bottom:none!important}
+.module.highlighted.title-ticker  .nssp2 .ns2-art-wrap  h4.ns2-title{margin:7px 0 3px 0!important}
+.module.highlighted.title-ticker  .nssp2 .ns2-art-wrap  h4.ns2-title a{color:#fff!important;font-size:16px!important;font-weight:700!important}
+.module.highlighted.title-ticker  .nssp2 .ns2-art-wrap p.ns2-introtext{color:#fff}
+.module.highlighted.title-ticker .mod-content{margin-left:100px}
+
+/*smart slider*/
+.nivoSlider{-webkit-box-shadow:none!important;-moz-box-shadow:none!important;box-shadow:none!important}
+.nivoSlider .nivo-prevNav{left:0!important;width:20px!important;height:40px!important}
+.nivoSlider .nivo-nextNav{right:0!important;width:20px!important;height:40px!important}
+.nivoSlider .nivo-directionNav a{top:40%!important}
+.nivoSlider .nivo-caption{background:rgba(0, 0, 0, 0.75)!important}
+.nivoSlider h1.nivo-title {font-size:24px!important;line-height:20px!important;text-shadow:0 1px rgba(0,0,0,.4)}

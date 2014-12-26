@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+
+              <field name="id" type="text" default="0" label="COM_TRN_FORM_LBL_PROJECT_ID"
+            readonly="true" class="readonly"
+            description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="created_by" type="createdby" default="" 
+            label="COM_TRN_FORM_LBL_PROJECT_CREATED_BY"
+            description="COM_TRN_FORM_DESC_PROJECT_CREATED_BY"  /> 
+
+       <field name="create_project" type="text"
+                
+            label="COM_TRN_FORM_LBL_PROJECT_CREATE_PROJECT"
+            description="COM_TRN_FORM_DESC_PROJECT_CREATE_PROJECT" 
+                
+                
+                
+            menu_published="0"
+            filter="raw"
+            option_on="Yes"
+            option_off="Yes" /> 
+
+       <field name="expiration_project" type="text"
+                
+            label="COM_TRN_FORM_LBL_PROJECT_EXPIRATION_PROJECT"
+            description="COM_TRN_FORM_DESC_PROJECT_EXPIRATION_PROJECT" 
+                
+                
+                
+            menu_published="0"
+            filter="raw"
+            option_on="Yes"
+            option_off="Yes" /> 
+
+       <field name="name_project" type="text"
+                
+            label="COM_TRN_FORM_LBL_PROJECT_NAME_PROJECT"
+            description="COM_TRN_FORM_DESC_PROJECT_NAME_PROJECT" 
+                
+                
+                
+            menu_published="0"
+            filter="raw"
+            option_on="Yes"
+            option_off="Yes" /> 
+
+       <field name="extera_filde" type="text"
+                
+            label="COM_TRN_FORM_LBL_PROJECT_EXTERA_FILDE"
+            description="COM_TRN_FORM_DESC_PROJECT_EXTERA_FILDE" 
+                
+                
+                 /> 
+
+       <field name="type_project" type="text"
+                
+            label="COM_TRN_FORM_LBL_PROJECT_TYPE_PROJECT"
+            description="COM_TRN_FORM_DESC_PROJECT_TYPE_PROJECT" 
+                
+                
+                 /> 
+
+         <field
+        name="state"
+        type="list"
+        label="JSTATUS"
+        description="JFIELD_PUBLISHED_DESC"
+        class="inputbox"
+        size="1"
+        default="1">
+        <option value="1">JPUBLISHED</option>
+        <option value="0">JUNPUBLISHED</option>
+        <option value="2">JARCHIVED</option>
+        <option value="-2">JTRASHED</option>
+    </field> 
+
+                        <field name="checked_out" type="hidden" filter="unset" />
+        <field name="checked_out_time" type="hidden" filter="unset" /> 
+
+ </fieldset> 
+
+ <fieldset 
+                        name="accesscontrol">
+                       <field name="asset_id" type="hidden" filter="unset" />
+                       <field name="rules"
+                            type="rules"
+                            label="JFIELD_RULES_LABEL"
+                            translate_label="false"
+                            filter="rules"
+                            validate="rules"
+                            class="inputbox"
+                            component="com_trn"
+                            section="project"
+                        />
+
+	</fieldset>
+
+</form>

@@ -1,0 +1,107 @@
+/*---------------------------------------------------------------
+# Package - Joomla Template based on Helix Framework   
+# ---------------------------------------------------------------
+# Author - JoomShaper http://www.joomshaper.com
+# Copyright (C) 2010 - 2012 JoomShaper.com. All Rights Reserved.
+# license - PHP files are licensed under  GNU/GPL V2
+# license - CSS  - JS - IMAGE files  are Copyrighted material 
+# Websites: http://www.joomshaper.com
+-----------------------------------------------------------------*/
+@font-face { font-family: 'b yekan'; src: url('BYekan.eot?#') format('eot'),  /* IE68 */ url('BYekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('BYekan.ttf') format('truetype');  /* Saf35, Chrome4+, FF3.5, Opera 10+ */ }
+@font-face { font-family: 'w yekan'; src: url('WYekan.eot?#') format('eot'),  /* IE68 */ url('WYekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('WYekan.ttf') format('truetype');  /* Saf35, Chrome4+, FF3.5, Opera 10+ */ }
+html{direction:rtl}
+a#logo,#logo-text {float:right}
+a#logo {background-position:100% 50%}
+
+/*Float Right*/
+.sp_date,
+#sp-top-menu{float:right}
+p  td  div span {font-family: 'b yekan';}
+/*Float Left*/
+#sp-search,
+#sp-banner,#sp-share,a.login_link{float:left}
+
+/*top menu*/
+#sp-top-menu li{border-right:1px solid #6f6f6f;border-left:none!important}
+
+/*Search*/
+#sp-search .mod-search input#mod-search-searchword, 
+#sp-search .mod-search input#mod-finder-searchword{background-position:4% 50%!important}
+
+/*sp tab and news show sp2*/
+.nssp2 .ns2-art-wrap.flt-left{float:right!important}
+.nssp2 .ns2-links-wrap .ns2-image{float: right!important;margin: 0 5px 15px 15px!important;}
+.nssp2 .ns2-art-wrap .ns2-image{float: right!important;margin: 5px 0 10px 15px!important;}
+
+/* all news show sp2 common */
+.nssp2 .ns2-art-controllers{left:0px!important;right:auto;}
+.highlighted .nssp2 .ns2-art-controllers {left:10px!important;right:auto}
+
+/*news show sp2 latest update*/
+.module.highlighted.title-ticker h3.header{right:0!important;width:90px;color:#fff!important;padding:5px 0!important;text-align: center;border-bottom:none!important}
+.module.highlighted.title-ticker .mod-content{margin-right:100px!important;margin-left:auto}
+
+#sp-leftcol, #sp-rightcol, #sp-maincol ,#sp-inset1, #sp-inset2, #inner_content, .sp-block{float:right!important}
+.sp-block .first {margin-left:0!important;margin-right:-10px}
+.sp-block .last {margin-right:0!important;margin-left:-10px}
+
+/*Hornav*/
+#hornav li .submenu,#sublevel li .submenu {direction:ltr}
+.submenu-inner {direction:rtl}
+#hornav .megacol {float:right!important}
+#hornav ul.level-0,
+#sublevel ul.level-1,#hornav ul.level-0 > li.menu-item,
+#sublevel ul.level-1 > li.menu-item{}
+#hornav ul.level-0 > li.parent > a.menu-item span.menu,
+#sublevel ul.level-1 > li.parent > a.menu-item span.menu {background: none!important}
+#hornav ul.level-0 > li.parent > a.menu-item span.menu,
+#sublevel ul.level-1 > li.parent > a.menu-item span.menu {padding-right: 0!important;padding-left: 12px!important}
+#hornav ul li.parent > a.menu-item span.menu,
+#sublevel ul li.parent > a.menu-item span.menu {padding-right: 0!important;padding-left: 12px!important;background:url(../images/daddy_rtl.png) no-repeat 0 50%!important}
+#hornav ul.level-0 > li.menu-item span.has-image,
+#sublevel ul.level-1 > li.menu-item span.has-image{padding-left:0!important;padding-right:18px;background-position:100% 50%!important}
+
+/*Modules*/
+#sp-bottom .separator .mod-block{}
+
+/* Footer */
+#sp-footer .cp {float:right;}
+#sp-footer-nav{float:left}
+a#topofpage{float:left}
+
+/* Helix Logo */
+.helix-logo-light,.helix-logo-dark,.helix-logo-light-small,.helix-logo-dark-small{float:right!important;padding:0 0 0 10px;margin:0 0 0 15px;border-right:0;border-left:1px solid #e5e5e5}
+
+/*Joomla*/
+fieldset dd{float:right}
+fieldset dt{float:right}
+ul.buttonheading{float:left}
+dl.article-info{float:right}
+#form-login-username label, #form-login-password label, #form-login-remember label {float: right;text-align: right}
+#adminForm table thead tr, #adminForm table thead tr th {text-align: right}
+div.pagination ul{text-align:right}
+div.pagination p.counter{float:left}
+.filter-search{float:right}
+div.categories-list dt {float: right}
+
+.login label,.profile-edit dl dt,.remind dl dt,.reset dl dt,.registration dl dt{float:right;text-align:left}
+.login .inputbox,.login input.required,.registration dl dd input.required,.remind dl dd input.required,.reset dl dd input.required,
+.profile-edit .inputbox,.profile-edit input.required,.profile-edit input,.profile-edit select{margin:0 10px 0 0}
+.login .button,.login button,.profile-edit button,.remind button,.reset button,.registration button{margin:0 160px 0 0}
+
+/*Edit*/
+.edit label{float:right;text-align:left}
+label#jform_description-lbl {text-align:right}
+.edit .inputbox,.edit input{margin:0 10px 0 0}
+.edit select{margin:0 10px 0 0}
+.edit div.formelm-buttons {margin:0 140px 20px 0}
+
+/*Typography*/
+p.stickynote,p.download{background-position:100% 0!important;padding:15px 60px 15px 10px!important}
+p.error,p.warn,p.tips,p.help,p.info,p.email,p.print,p.rss,p.save,p.lock,p.user,p.new,p.house,p.tag{background-position:100% 5px!important;padding:0 24px 5px 0!important}
+.dropcap:first-letter{float:right!important;padding:4px 0 0 8px!important}
+ul.rss li, ul.minus li, ul.delete li, ul.check li, ul.arrow li, ul.arrow-2 li, ul.add li, ul.star li {padding:0 20px 0 0!important;background-position:100% 2px!important}
+
+/*Bootstrap*/
+.pull-right {float:left}
+.pull-left {float:right}

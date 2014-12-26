@@ -1,0 +1,188 @@
+/*---------------------------------------------------------------
+# Package - Joomla Template based on Helix Framework   
+# ---------------------------------------------------------------
+# Author - JoomShaper http://www.joomshaper.com
+# Copyright (C) 2010 - 2012 JoomShaper.com. All Rights Reserved.
+# license - PHP files are licensed under  GNU/GPL V2
+# license - CSS  - JS - IMAGE files  are Copyrighted material 
+# Websites: http://www.joomshaper.com
+-----------------------------------------------------------------*/
+
+/*Module type SP_XHTML*/
+.mod-wrapper,.mod-wrapper-flat {position:relative}
+.module.menu{padding:15px}
+.mod-wrapper h3.header{background:url(../images/h3_bg.png) repeat-x 0 100%;color:#272727;font-size:18px;line-height:normal;margin:0 0 10px;padding:0 0 13px}
+.module.text .mod-wrapper h3.header {font-size:9px;padding:0;background:none;text-align:center}
+
+.mod-wrapper ul{list-style:none;margin:0;padding:0}
+.mod-wrapper li{background:none;font-size:12px;margin:0;padding:4px 0px}
+.mod-wrapper li li{margin-left:10px;border-bottom:0!important}
+.mod-wrapper li a{text-decoration:none}
+.mod-wrapper li:hover > a, .mod-wrapper li.active > a{text-decoration:none}
+
+/*Suffix menu*/
+.module.menu ul.menu li {padding:8px 10px;margin:0;background:none}
+.module.menu ul.menu li a {padding:0;margin:0}
+.module.menu ul.menu li:hover,
+.module.menu ul.menu li.active {background:#fbfbfb}
+.module.menu ul.menu li:hover > a {background:none}
+/*Start Module Variations*/
+
+/*Common Suffix*/
+.module.orange .mod-wrapper,
+.module.white .mod-wrapper,
+.module.gray .mod-wrapper,
+.module.twitter .mod-wrapper,
+.module.sky .mod-wrapper,
+.module.highlighted   .mod-wrapper,
+.module.maroon .mod-wrapper,
+.module.green .mod-wrapper,
+.module.grass .mod-wrapper,
+.module.wheat .mod-wrapper,
+.module.olive .mod-wrapper,
+.module.dark .mod-wrapper {
+	padding:10px;
+}
+
+
+
+/*Suffix orange*/
+.module.orange  .mod-wrapper {background-color:#ffae00;color:#fff;text-shadow:0 1px rgba(0, 0, 0, .2)}
+.module.orange .mod-wrapper h3.header{background:none;color:#fff;padding-bottom:10px;border-bottom:1px solid #ffd376}
+.module.orange  .mod-wrapper a {color:#fff200}
+.module.orange  .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #fff200;padding:5px 15px;}
+.rtl .module.orange  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.orange  .mod-wrapper ul li a{color:#fff200}
+.module.orange  .mod-wrapper a:hover,.module.orange  .mod-wrapper ul li a:hover{color:#d59c02}
+
+/*Suffix White*/
+.module.white .mod-wrapper {}
+.module.white .mod-wrapper a {color:#ccc}
+
+/*Suffix gray*/
+.module.gray  .mod-wrapper {background-color:#f4f4f4;color:#949292}
+.module.gray .mod-wrapper h3.header{background:none;color:#727272;border-bottom:1px solid #ddd;margin: -10px -10px 10px -10px;padding: 10px 15px;box-shadow: 0 1px 1px 0 #E7E7E7;}
+.module.gray  .mod-wrapper a {color:#5fa1f3}
+.module.gray  .mod-wrapper a:hover{color:#1d6dd0}
+.module.gray  .mod-wrapper ul li {background:none;border-bottom:1px dotted #b9b9b9;padding:0 5px;}
+.module.gray  .mod-wrapper ul li:first-child {border-bottom:none}
+.rtl .module.gray  .mod-wrapper ul li {background:none}
+.module.gray  .mod-wrapper ul li a{color:#5fa1f3}
+.module.gray  .mod-wrapper ul li a:hover{color:#1d6dd0}
+
+/*Suffix twitter*/
+.module.twitter .mod-wrapper {background-color:#effdfc;color:#888}
+.module.twitter .mod-wrapper h3.header{color:#779E9A;background:none;border-bottom:1px solid #ceeae8}
+.module.twitter  .mod-wrapper a {color:#00b6e3}
+.module.twitter  .mod-wrapper a:hover{color:#05C9FA}
+.module.twitter  .mod-wrapper ul li {background:url(../images/typo/arrow-dark.png) no-repeat 0 8px;border-bottom:1px dotted #B6D4DB;padding:5px 15px;}
+.rtl .module.twitter  .mod-wrapper ul li {background: url(../images/typo/arrow-dark-rtl.png) no-repeat 100% 8px}
+.module.twitter  .mod-wrapper ul li a{color:#00b6e3}
+.module.twitter  .mod-wrapper ul li a:hover{color:#05C9FA}
+
+
+/*Suffix sky*/
+.module.sky  .mod-wrapper {background-color:#a7d1f1;color:#126B81;text-shadow:0 1px rgba(160, 160, 160, .3)}
+.module.sky .mod-wrapper h3.header{background:none;color:#126B81;border-bottom:1px solid #87b6da}
+.module.sky  .mod-wrapper a {color:#1d6dd0}
+.module.sky  .mod-wrapper a:hover{color:#5fa1f3}
+.module.sky  .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #6FC2CE;padding:5px 15px;}
+.rtl .module.sky  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.sky .mod-wrapper ul li a{color:#1d6dd0}
+.module.sky  .mod-wrapper ul li a:hover{color:#5fa1f3}
+
+/*Suffix highlighted  */
+.module.highlighted    .mod-wrapper {}
+.module.highlighted   .mod-wrapper h3.header{background:none}
+.module.highlighted    .mod-wrapper h3.header span{color:#fff}
+.module.highlighted    .mod-wrapper a {color:#5EB9FF}
+.module.highlighted    .mod-wrapper a:hover{color:#00045C}
+.module.highlighted    .mod-wrapper ul li {background: url(../images/typo/mark_category.png) no-repeat 10px 15px}
+.rtl .module.highlighted    .mod-wrapper ul li {background: url(../images/typo/mark_category.png) no-repeat 98% 10px}
+.module.highlighted   .mod-wrapper ul li a{color:#5EB9FF;padding:5px 20px;}
+.module.highlighted    .mod-wrapper ul li a:hover{color:#00045C}
+/*Suffix maroon*/
+.module.maroon .mod-wrapper {background-color:#946050;color:#DDC1B9;text-shadow:0 1px rgba(0, 0, 0, 0.21)}
+.module.maroon .mod-wrapper h3.header{background:none;color:#CCB7B1;border-bottom:1px solid #ae7664}
+.module.maroon  .mod-wrapper a {color:#680D09}
+.module.maroon  .mod-wrapper a:hover{color:#000}
+.module.maroon  .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #814A38;padding:5px 15px;}
+.rtl .module.maroon  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.maroon .mod-wrapper ul li a{color:#680D09}
+.module.maroon  .mod-wrapper ul li a:hover{color:#000}
+
+/*Suffix green*/
+.module.green  .mod-wrapper{background-color:#3cb878;color:#8AFDC2;text-shadow:0 1px rgba(148, 148, 148, 0.79)}
+.module.green .mod-wrapper h3.header{background:none;color:#8AFDC2;border-bottom:1px solid #35C279}
+.module.green  .mod-wrapper a {color:#03793D}
+.module.green  .mod-wrapper a:hover{color:#000}
+.module.green  .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #24D176;padding:5px 15px;}
+.rtl .module.green  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.green .mod-wrapper ul li a{color:#03793D}
+.module.green  .mod-wrapper ul li a:hover{color:#000}
+
+/*Suffix grass*/
+.module.grass  .mod-wrapper{background-color:#78A24F;color:#fff;text-shadow:0 1px rgba(0, 0, 0, 0.79)}
+.module.grass .mod-wrapper h3.header{background:none;color:#fff;border-bottom:1px solid #5F8838}
+.module.grass  .mod-wrapper a {color:#29460D}
+.module.grass  .mod-wrapper a:hover{color:#9FE061}
+.module.grass  .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #5F8838;padding:5px 15px;}
+.rtl .module.grass  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.grass.mod-wrapper ul li a{color:#29460D}
+.module.grass  .mod-wrapper ul li a:hover{color:#9FE061}
+
+/*Suffix Wheat*/
+.module.wheat  .mod-wrapper{background-color:#a8a975;color:#EBECB0;text-shadow:0 1px rgba(0, 0, 0, 0.3)}
+.module.wheat .mod-wrapper h3.header{background:none;color:#EBECB0;border-bottom:1px solid #c3c491}
+.module.wheat  .mod-wrapper a {color:#868844}
+.module.wheat  .mod-wrapper a:hover{color:#555721}
+.module.wheat  .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #D0D19C;padding:5px 15px;}
+.rtl .module.wheat  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.wheat.mod-wrapper ul li a{color:#868844}
+.module.wheat  .mod-wrapper ul li a:hover{color:#555721}
+
+/*Suffix olive*/
+.module.olive  .mod-wrapper{background-color:#69981e;color:#B5EC5B;text-shadow:0 1px rgba(0, 0, 0, 0.3)}
+.module.olive .mod-wrapper h3.header{background:none;color:#B5EC5B;border-bottom:1px solid #88B146}
+.module.olive  .mod-wrapper a {color:#fff}
+.module.olive  .mod-wrapper a:hover{color:#40630A}
+.module.olive  .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #7FBB20;padding:5px 15px;}
+.rtl .module.olive  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.olive.mod-wrapper ul li a{color:#fff}
+.module.olive  .mod-wrapper ul li a:hover{color:#40630A}
+
+/*Suffix dark*/
+.module.dark .mod-wrapper{background-color:#618484;color:#DCDDDD;text-shadow:0 1px rgba(44, 44, 44, 0.5)}
+.module.dark .mod-wrapper h3.header{background:none;color:#B9DFDF;border-bottom:1px solid #769a9a;}
+.module.dark   .mod-wrapper a {color:#092C2C}
+.module.dark  .mod-wrapper a:hover{color:#000}
+.module.dark   .mod-wrapper ul li {background: url(../images/typo/arrow-light.png) no-repeat 0 8px;border-bottom:1px dotted #63A5A5;padding:5px 15px;}
+.rtl .module.dark  .mod-wrapper ul li {background: url(../images/typo/arrow-light-rtl.png) no-repeat 100% 8px}
+.module.dark .mod-wrapper ul li a{color:#092C2C}
+.module.dark   .mod-wrapper ul li a:hover{color:#000}
+
+/*Module Type Flat*/
+.mod-wrapper-flat h3.header{font-size:16px;font-weight:700;color:#333;margin:0;padding:2px 5px}
+.mod-wrapper-flat ul{list-style:none;margin:0;padding:0}
+.mod-wrapper-flat li{font-size:11px;display:block;text-decoration:none;margin:0;padding:4px;background:none;color:#888}
+.mod-wrapper-flat li a,.mod-wrapper-flat a{#548aed}
+.mod-wrapper-flat a:hover{text-decoration:underline}
+#sp-bottom .mod-wrapper-flat h3.header{}
+#sp-bottom .separator .mod-block{}
+#sp-bottom .mod-block{padding:20px 10px}
+#sp-bottom .mod-wrapper-flat li{}
+
+/*Module Type Menu*/
+.mod-wrapper-menu {margin-top:8px}
+.mod-wrapper-menu h3.header{font-size:12px;font-weight:700;color:#000;margin:0;padding:2px 5px}
+.mod-wrapper-menu ul{list-style:none;margin:0;padding:0}
+.mod-wrapper-menu li{font-size:11px;display:block;text-decoration:none;margin:0;padding:4px}
+.mod-wrapper-menu li a:hover{text-decoration:underline}
+/*Badges*/
+span.sp-badge.new,span.sp-badge.free,span.sp-badge.hot,span.sp-badge.pick,span.sp-badge.top
+{height:48px;position:absolute;right:-3px;text-indent:-999em;top:-3px;width:48px;z-index:0;padding: 0;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;}
+span.sp-badge.new{background: url(../images/base_new.png) no-repeat 100% 0;}
+span.sp-badge.free{background: url(../images/base_free.png) no-repeat 100% 0;}
+span.sp-badge.hot{background: url(../images/base_hot.png) no-repeat 100% 0;}
+span.sp-badge.pick{background: url(../images/base_pick.png) no-repeat 100% 0;}
+span.sp-badge.top {background: url(../images/base_top.png) no-repeat 100% 0;}

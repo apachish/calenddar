@@ -1,0 +1,23 @@
+/*------------------------------------------------------------------------
+# mod_sp_stock - Yahoo stock module by JoomShaper.com
+# ------------------------------------------------------------------------
+# author    JoomShaper http://www.joomshaper.com
+# Copyright (C) 2010 - 2012 JoomShaper.com. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# Websites: http://www.joomshaper.com
+-------------------------------------------------------------------------*/
+.sp-stock{font-family:Verdana, Geneva, sans-serif;font-size:12px}
+.sp-stock li{display:block;padding:2px 0}
+.sp-stock .sp-stock-list{clear:both}
+.sp-stock .sp-stock-symbol{color:#090;min-width:60px;font-weight:600;float:left}
+.sp-stock .sp-stock-price{color:#666;font-size:10px;float:left}
+.sp-stock .sp-stock-right{float:right}
+.sp-stock .sp-stock-up{color:#090}
+.sp-stock .sp-stock-down{color:#900}
+.sp-stock .sp-stock-nochange{color:#333}
+.sp-stock-tooltip-data{display:none}
+.sp-stock-tooltip-data div{padding:3px 0}
+.sp-stock-tooltip-data div span{width:300px}
+.sp-stock-tooltip-holder{background:#FFF;text-align:left;font-family:Verdana, Geneva, sans-serif;font-size:12px;border:#999 2px solid;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-moz-box-shadow:1px 1px 5px 1px #CCC;-webkit-box-shadow:1px 1px 5px 1px #CCC;box-shadow:1px 1px 5px 1px #000;padding:5px}
+.sp-stock-tooltip-holder h4{border-bottom:#CCC 1px solid;padding:3px 0}
+.sp-stock .sp-stock-change,.sp-stock .sp-stock-changepercent{font-size:11px}

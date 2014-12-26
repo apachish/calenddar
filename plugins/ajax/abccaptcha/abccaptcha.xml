@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="ajax" method="upgrade">
+	<name>plg_ajax_abccaptcha</name>
+	<version>0.0.1</version>
+	<creationDate>March 2014</creationDate>
+	<author>Hadi Pourabbas</author>
+	<authorEmail>info@abccom.biz</authorEmail>
+	<authorUrl>http://www.abccom.biz</authorUrl>
+	<license>GNU General Public License version 2 or later</license>
+	<copyright>Copyright (C) 2013 betweenbrain llc. All rights reserved.</copyright>
+	<description>PLG_AJAX_ABCCAPTCHA_XML_DESC</description>
+	
+	<scriptfile>script.php</scriptfile>
+	
+	<files>
+		<filename plugin="abccaptcha">abccaptcha.php</filename>
+		<folder>language</folder>
+		<filename>index.html</filename>
+		<filename>createimage.php</filename>
+		<filename>script.php</filename>
+		<folder>fonts</folder>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_ajax_abccaptcha.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_ajax_abccaptcha.sys.ini</language>	
+		<language tag="fa-IR">fa-IR/fa-IR.plg_ajax_abccaptcha.ini</language>
+		<language tag="fa-IR">fa-IR/fa-IR.plg_ajax_abccaptcha.sys.ini</language>
+	</languages>	
+</extension>

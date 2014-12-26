@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+  <name>SP Stock</name>
+  <author>JoomShaper.com</author>
+  <creationDate>Aug 2012</creationDate>
+  <copyright>Copyright (C) 2010 - 2012 JoomShaper.com. All rights reserved.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <authorEmail>support@joomshaper.com</authorEmail>
+  <authorUrl>www.joomshaper.com</authorUrl>
+  <version>1.0.0</version>
+  <description>Stock module for Joomla 2.5 by JoomShaper.com</description>
+  <languages>
+    <language tag="en-GB">language/en-GB.mod_sp_stock.ini</language>
+  </languages>
+  <files>
+    <filename module="mod_sp_stock">mod_sp_stock.php</filename>
+    <folder>tmpl/</folder>
+    <folder>assets/</folder>
+    <folder>elements/</folder>
+    <filename>helper.php</filename>
+    <filename>index.html</filename>
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="basic" addfieldpath="/modules/mod_sp_stock/elements">
+ 	    <field name="chart_display" type="list" default="true" label="CHART_DISPLAY" description="CHART_DISPLAY_DESC">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </field>
+        <field name="tooltip_display" type="list" default="true" label="TOOLTIP_DISPLAY" description="TOOLTIP_DISPLAY_DESC">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </field>
+        <field name="stock_id" type="text" default="GOOG" label="DEFAULT_STOCK_ID" description="DEFAULT_STOCK_ID_DESC" />
+        <field name="time_span" type="list" default="1d" label="TIME_SPAN" description="TIME_SPAN_DESC">
+          <option value="1d">1 Day</option>
+          <option value="5d">5 Days</option>
+          <option value="3m">3 Months</option>
+          <option value="6m">6 Months</option>
+          <option value="1y">1 Year</option>
+          <option value="2y">2 Years</option>
+          <option value="5y">5 Years</option>
+          <option value="my">Maximum</option>
+        </field>
+        <field name="chart_type" type="list" default="l" label="CHART_TYPE" description="CHART_TYPE_DESC">
+          <option value="l">Line</option>
+          <option value="b">Bar</option>
+          <option value="c">Candle</option>
+        </field>
+        <field name="chart_scale" type="list" default="on" label="CHART_SCALE" description="CHART_SCALE_DESC">
+          <option value="on">Logarithmic</option>
+          <option value="off">Arithmetic</option>
+        </field>
+        <field name="chart_image_size" type="list" default="m" label="CHART_IMAGE_SIZE" description="CHART_IMAGE_SIZE_DESC">
+          <option value="s">Small</option>
+          <option value="m">Middle</option>
+          <option value="l">Large</option>
+        </field>
+        <field name="moving_average_indicator" type="text" default="" label="MOVING_AVERAGE_INDICATOR" description="MOVING_AVERAGE_INDICATOR_DESC"/>
+        <field name="exponential_moving_average_indicator" type="text" default="" label="EXPONENTIAL_MOVING_AVERAGE_INDICATOR" description="EXPONENTIAL_MOVING_AVERAGE_INDICATOR_DESC"/>
+        <field name="technical_indicator" type="Stock" default="" label="TECHNICAL_INDICATOR" description="TECHNICAL_INDICATOR_DESC">
+          <option value="">None</option>
+          <option value="fs">Stochastic</option>
+          <option value="m26-12-9">Moving-Average-Convergence-Divergence</option>
+          <option value="f14">Money Flow Index</option>
+          <option value="p12">Rate of Change</option>
+          <option value="r14">Relative Strength Index</option>
+          <option value="ss">Slow Stochastic</option>
+          <option value="v">Volume (Inside chart)</option>
+          <option value="vm">Volume with Moving Average</option>
+          <option value="w14">Williams Percent Range</option>
+          <option value="b">Bollinger Bands</option>
+          <option value="p">Parabolic Stop And Reverse</option>
+          <option value="s">Splits</option>
+        </field>
+        <field name="comparing_ids" type="text" default="AAPL,MSFT" label="COMPARING_IDS" description="COMPARING_IDS_DESC"/>
+      </fieldset>
+      <fieldset name="advanced">
+       <field name="moduleclass_sfx" type="text" default="" label="MODSFX" description="MODSFX_DESC" />	  
+        <field name="cache" type="hidden" default="0"/>
+        <field name="module_cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+          <option value="1">Use global</option>
+          <option value="0">No caching</option>
+        </field>
+        <field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+      </fieldset>
+    </fields>
+  </config>
+</extension>

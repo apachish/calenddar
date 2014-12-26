@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<access component="com_adduserfrontend">
+	<section name="component">
+		<action name="core.admin" title="JAction_Admin" descriptionX="JAction_Admin_Component_Desc" />
+		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+<!-- Custom privileges -->
+		<action name="adduserfrontend.createuser" title="Create User From Front End" description="To Allow New User Creation From Front End" />
+	</section>
+	<section name="application">
+		<action name="adduserfrontend.createuser" title="Create User From Front End" description="To Allow New User Creation From Front End" />
+	</section>
+</access>
