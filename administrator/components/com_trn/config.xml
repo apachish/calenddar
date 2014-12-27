@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
     <fieldset label="COM_TRN" name="trn">
-        
+                <field name="email1"
+               type="email"
+               default=""
+               label="Enter  email 1:"
+               description=""
+               size="30" />
+        <field name="email2"
+               type="email"
+               default=""
+               label="Enter email 2:"
+               description=""
+               size="30" />
+        <field name="email3"
+               type="email"
+               default=""
+               label="Enter  email 3:"
+               description=""
+               size="30" />
+        <field name="email4"
+               type="email"
+               default=""
+               label="Enter email 4:"
+               description=""
+               size="30" />
+                       <field name="textemail"
+               type="textarea"
+               default=""
+               label="Enter text email:"
+               description=""
+               rows="10" 
+               cols="5"
+               />
     </fieldset>
     <fieldset 
         name="permissions"
