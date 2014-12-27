@@ -33,5 +33,53 @@ class TrnController extends JControllerLegacy {
 
         return $this;
     }
+    function typeproject(){
+        $model = &$this->getModel('projects');
+        $result = $model->typeproject();
+            if($result) {
+                echo json_encode($result);
+                exit();
+            }else{
+                exit;
+            }
+        
+    }
+    public function searched(){
+        $search = JRequest::getVar('search_tel');
+        $model = &$this->getModel('projects');
+        $result = $model->searched();
+        if($search) {
+            if(!$result) {
+                echo '<h1 style="color: #353535" >';
+                echo 'یافت نشد';
+                echo '</h1>';
+                echo '<p>'.JText::_('MESSAGE_ADD').'</p>';
+                echo '<a href="index.php?option=com_adduserfrontend&view=adduserfrontend&telephon='.$search.'">'.JText::_('BHUTTON_ADD').'</a>';
+                exit();
+
+            }else{
+                $j=1;
+echo '<table class="rwd-table">';
+    echo '<tr>';
+                echo '<th>'.JText::_('LIST_ROW').'</th>';
+                echo '<th>'.JText::_('LIST_NAME').'</th>';
+echo '<th>'.JText::_('LIST_TELEPHON').'</th>';
+echo '<th>'.JText::_('LIST_EDIT').'</th></tr>';
+               foreach($result as $res){
+                            echo '<tr>';
+        echo '<td data-th="'.JText::_('LIST_ROW').'"><span>'.$j.'</span></td>';
+        echo '<td data-th="'.JText::_('LIST_NAME').'"><span>'.$res->name.'</span></td>';
+        echo '<td data-th="'.JText::_('LIST_TELEPHON').'"><span></span></td>';
+        echo '<td data-th="'.JText::_('LIST_EDIT').'"><span><input type="radio" name="edit"></span></td>';
+        echo '</tr>';
+                   $j++;
+               }
+                echo '</table>';
+                exit();
+
+
+            }
+        }
+    }
 
 }

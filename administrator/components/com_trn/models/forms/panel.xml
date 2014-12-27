@@ -30,15 +30,12 @@
                 
                  /> 
 
-       <field name="type_panel" type="text"
+       <field name="type_panel" type="textarea"
                 
-            label="COM_TRN_FORM_LBL_PANEL_TYPE_PANEL"
-            description="COM_TRN_FORM_DESC_PANEL_TYPE_PANEL" 
-                
-                
-                
-            menu_published="0"
-            filter="raw"
+            label="توضیحات"
+            description="COM_TRN_FORM_DESC_PANEL_TYPE_PANEL"       
+            cols="100"
+            rows="8"
             option_on="Yes"
             option_off="Yes" /> 
 

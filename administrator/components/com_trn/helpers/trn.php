@@ -29,6 +29,11 @@ class TrnHelper {
 			'index.php?option=com_trn&view=panels',
 			$vName == 'panels'
 		);
+JHtmlSidebar::addEntry(
+			JText::_('COM_TRN_TITLE_TYPE_PROJECTS'),
+			'index.php?option=com_trn&view=type_projects',
+			$vName == 'type_projects'
+		);
         		JHtmlSidebar::addEntry(
 			JText::_('COM_TRN_TITLE_HOSTS'),
 			'index.php?option=com_trn&view=hosts',
@@ -39,6 +44,7 @@ JHtmlSidebar::addEntry(
 			'index.php?option=com_trn&view=domains',
 			$vName == 'domains'
 		);
+
 
 
     }

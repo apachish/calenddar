@@ -175,11 +175,12 @@ $doc->addStyleDeclaration($style);
             if (searchKeyword.length >= 3) {
                 jQuery.ajax(
                     {
-                        url : "index.php?option=com_conversation&task=searched",
+                        url : "index.php?option=com_trn&task=searched",
                         type: "POST",
                         data :{search_tel:searchKeyword},
                         success:function(data, textStatus, jqXHR)
                         {
+                            console.log(data);
                                 jQuery('.resultsearch').html(data);
 
                         }

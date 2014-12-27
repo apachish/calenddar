@@ -47,6 +47,7 @@
 <menu link="option=com_trn&amp;view=domains" view="domains" img="components/com_trn/assets/images/s_domains.png" alt="Trn/Domains">COM_TRN_TITLE_DOMAINS</menu>
 <menu link="option=com_trn&amp;view=hosts" view="hosts" img="components/com_trn/assets/images/s_hosts.png" alt="Trn/Hosts">COM_TRN_TITLE_HOSTS</menu>
 <menu link="option=com_trn&amp;view=panels" view="panels" img="components/com_trn/assets/images/s_panels.png" alt="Trn/Panels">COM_TRN_TITLE_PANELS</menu>
+<menu link="option=com_trn&amp;view=type_projects" view="type_projects" img="components/com_trn/assets/images/s_type_projects.png" alt="Trn/Type_projects">COM_TRN_TITLE_TYPE_PROJECTS</menu>
         </submenu>
         <files folder="administrator">
             <filename>access.xml</filename>

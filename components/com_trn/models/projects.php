@@ -246,5 +246,30 @@ $query->where('a.state = 1');
     {
         return preg_match("/^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/", $date) && date_create($date);
     }
-
+    function typeproject(){
+        $db = JFactory::getDBO();
+        $query_project="SELECT * FROM #__trn_type_project";
+        $db->setQuery($query_project);
+        $db->query();
+        $rows = $db->getNumRows();
+        if($rows)
+        $list=$db->loadObjectlist();
+        else
+            $list=false;
+        return $list;
+    }
+    function searched(){
+        $search = JRequest::getVar('search_tel');
+        $db = JFactory::getDBO();
+        $user = JFactory::getUser();
+        $query_group="SELECT * FROM #__users where name like '%".$search."%' ";
+        $db->setQuery($query_group);
+        $db->query();
+        $rows = $db->getNumRows();
+        if($rows)
+            $list=$db->loadObjectlist();
+        else
+            $list=false;
+        return $list;
+    }
 }

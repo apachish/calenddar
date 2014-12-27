@@ -9,6 +9,8 @@ if (!JFactory::getUser()->authorise('adduserfrontend.createuser', 'com_adduserfr
 {
 	return JError::raiseWarning(404, JText::_('')); // Display nothing because controller already does show that message also
 }
+$variable=$this->type_project();
+$type_host=$this->type_host();
 
 ?>
 <link href="<?php echo JURI::root()?>components/com_adduserfrontend/form_style.css" rel="stylesheet" type="text/css" />
@@ -25,18 +27,23 @@ jQuery(document).ready(function(){
 	jQuery('#datepicker0').datepicker();
 		jQuery('#datepicker1').datepicker();
 	jQuery('#datepicker2').datepicker();
-
+  var myvar = <?php echo json_encode($variable); ?>;
     var next_p = 1;    
     var next_h= 1;
     var next_s = 1;
+  
     jQuery(".add-more_project").live('click',function(e){
         e.preventDefault();
         var addto = "#field_p" + next_p;
         var addRemove = "#field_p" + (next_p);
         next_p = next_p + 1;
-        var newIn = '<span id="field_p' + next_p + '"><input name="row_prject" type="hidden" value="'+ next_p+'"><input autocomplete="off"  placeholder="نام پروژه" class="input form-control"  name="field_p_name' + next_p + '" type="text">';
-         newIn += '<input autocomplete="off" class="input form-control " id="datepicker_p'+ next_p+'" placeholder="تاریخ  پروژه" name="field_p_date' + next_p + '" type="text">';
-         newIn += '<input autocomplete="off" class="input form-control"  placeholder="نوع پروژه" name="field_p_type' + next_p + '" type="text"></span>';
+        var newIn = '<span id="field_p' + next_p + '"><input name="row_prject" type="hidden" value="'+next_p+'"><input autocomplete="off"  placeholder="نام پروژه" class="input form-control"  name="prof_p_name'+next_p+'" type="text">';
+         newIn += '<input autocomplete="off" class="input form-control " id="datepicker_p'+ next_p+'" placeholder="تاریخ  پروژه" name="prof_p_date'+next_p+ '" type="text">';
+         newIn += '<select class="input"  name="prof_p_type'+next_p+'" ><option value="0">نوع پروژه انتخاب کنید</option>';
+                        jQuery.each(myvar ,function(_index, _val){
+                                newIn +='<option value="'+_val.id+'">'+_val.type_project+'</option>';
+                            })       
+        newIn +='</select></span>';
         var newInput = jQuery(newIn);
         var removeBtn = '<button id="remove_p' + (next_p - 1) + '" class="btn btn-danger remove-me_p" >-</button></div><div id="field">';
         var removeButton = jQuery(removeBtn);
@@ -59,8 +66,14 @@ jQuery(document).ready(function(){
         var addto = "#field_h" + next_h;
         var addRemove = "#field_h" + (next_h);
         next_h = next_h + 1;
-        var newIn = '<span id="field_h' + next_h + '"><input autocomplete="off" class="input form-control" placeholder="نام هاست" name="field_h_name' + next_h + '" type="text">';
-        newIn += '<input autocomplete="off" class="input form-control" id="datepicker_h'+ next_h+'" placeholder="تاریخ هاست" name="field_h_date' + next_h + '" type="text"></span>';
+          var myvar = <?php echo json_encode($type_host); ?>;
+        var newIn = '<span id="field_h' + next_h + '"><input name="row_host" type="hidden" value="'+next_h+'"><input autocomplete="off" class="input form-control" placeholder="نام هاست" name="prof_h_name' + next_h + '" type="text">';
+        newIn += '<input autocomplete="off" class="input form-control" id="datepicker_h'+ next_h+'" placeholder="تاریخ هاست" name="prof_h_date' + next_h + '" type="text">';
+        newIn += '<select class="input"  name="prof_h_type'+ next_h +'" ><option value="0">نوع هاست انتخاب کنید</option>';
+                        jQuery.each(myvar ,function(_index, _val){
+                                newIn +='<option value="'+_val.id+'">'+_val.name_panel+'</option>';
+                            })       
+        newIn +='</select></span>';
         var newInput = jQuery(newIn);
         var removeBtn = '<button id="remove_h' + (next_h- 1) + '" class="btn btn-danger remove-me_h" >-</button></div><div id="field_h">';
         var removeButton = jQuery(removeBtn);
@@ -82,8 +95,8 @@ jQuery(".add-more_domain").click(function(e){
         var addto = "#field_s" + next_s;
         var addRemove = "#field_s" + (next_s);
         next_s = next_s + 1;
-        var newIn = '<span id="field_s' + next_s + '"><input autocomplete="off" class="input form-control" placeholder="نام دامنه" name="field_s_name' + next_s + '" type="text">';
-         newIn += '<input autocomplete="off" class="input form-control" id="datepicker_s'+ next_s+'" placeholder="تاریخ دامنه" name="field_s_date' + next_s + '" type="text"></span>';
+        var newIn = '<span id="field_s' + next_s + '"><input name="row_domain" type="hidden" value="'+next_s+'"><input autocomplete="off" class="input form-control" placeholder="نام دامنه" name="prof_s_name'+next_s+'" type="text">';
+         newIn += '<input autocomplete="off" class="input form-control" id="datepicker_s'+ next_s+'" placeholder="تاریخ دامنه" name="prof_s_date'+next_s+'" type="text"></span>';
         var newInput = jQuery(newIn);
         var removeBtn = '<button id="remove_s' + (next_s- 1) + '" class="btn btn-danger remove-me_s" >-</button></div><div id="field_s">';
         var removeButton = jQuery(removeBtn);
@@ -484,11 +497,12 @@ $lastname = "";
 }
 ///insert project
 if($_POST['row_prject']){
+    $_POST['row_prject'];
 	for ($i=1; $i <= $_POST['row_prject']; $i++) { 
 		$name_p=$_POST['prof_p_name'.$i];
 		$date_p=$_POST['prof_p_date'.$i];
 		$type_p=$_POST['prof_p_type'.$i];
-		if($name_p && $date_p & $type_p){
+		if($name_p && $date_p && $type_p){
 			$sql_p="INSERT INTO #__trn_project(state,checked_out,checked_out_time,created_by,create_project,
 							expiration_project,name_project,type_project,user_id) 
 					VALUES (1,".$uid .",".$uid .",'".date("Y-m-d H:i:s")."','".$date_p."','".$date_p."','".$name_p."','".$type_p."',".$user_id.")";
@@ -502,12 +516,13 @@ if($_POST['row_prject']){
 //inser host
 if($_POST['row_host']){
 	for ($i=1; $i <= $_POST['row_host']; $i++) { 
-		$name_h=$_POST['prof_h_name'.$i];
-		$date_h=$_POST['prof_h_date'.$i];
-		if($name_h && $date_h){
+		 $name_h=$_POST['prof_h_name'.$i];
+		 $date_h=$_POST['prof_h_date'.$i];
+         $type_h=$_POST['prof_h_type'.$i];
+		if($name_h && $date_h  && $type_h){
 			$sql_h="INSERT INTO #__trn_host(state,checked_out,checked_out_time,created_by,create_host,
-							expiration_host,name_host,user_id) 
-					VALUES (1,".$uid .",".$uid .",'".date("Y-m-d H:i:s")."','".$date_h."','".$date_h."','".$name_h."',".$user_id.")";
+							expiration_host,name_host,user_id,type_host) 
+					VALUES (1,".$uid .",'".date("Y-m-d H:i:s")."',".$uid .",'".$date_h."','".$date_h."','".$name_h."',".$user_id.",".$type_h.")";
 			$db->setQuery($sql_h);
 			$db->query();
 		}
@@ -517,12 +532,12 @@ if($_POST['row_host']){
 //insert domain
 if($_POST['row_domain']){
 	for ($i=1; $i <= $_POST['row_domain']; $i++) { 
-		$name_s=$_POST['prof_s_name'.$i];
-		$date_s=$_POST['prof_s_date'.$i];
+		echo $name_s=$_POST['prof_s_name'.$i];
+		echo $date_s=$_POST['prof_s_date'.$i];
 		if($name_s && $date_s ){
-			$sql_s="INSERT INTO #__trn_domain(state,checked_out,checked_out_time,created_by,create_domain,
-							expiration_domain,name_domain,user_id) 
-					VALUES (1,".$uid .",".$uid .",'".date("Y-m-d H:i:s")."','".$date_s."','".$date_s."','".$name_s."',".$user_id.")";
+		echo	$sql_s="INSERT INTO #__trn_domain(state,checked_out,checked_out_time,created_by,create_domain,
+							expiration_domain,domain,user_id) 
+					VALUES (1,".$uid .",'".date("Y-m-d H:i:s")."',".$uid .",'".$date_s."','".$date_s."','".$name_s."',".$user_id.")";
 			$db->setQuery($sql_s);
 			$db->query();
 		}
@@ -856,8 +871,12 @@ echo '<tr>
                     <div id="field"><span id="field_p1">
                     <input autocomplete="off" class="input"  name="prof_p_name1" type="text" placeholder="نام پروژه" data-items="8"/>
                     <input autocomplete="off" class="input " id="datepicker0" name="prof_p_date1" type="text" placeholder="تاریخ پروژه" data-items="8"/>
-                    <input autocomplete="off" class="input"  name="prof_p_type1" type="text" placeholder="نوع پروژه" data-items="8"/></span>
-
+                    <select class="input"  name="prof_p_type1" >
+                    <option value="0">نوع پروژه انتخاب کنید</option>';
+                    foreach ($variable as $key => $value) {
+                            echo '<option value="'.$value->id.'">'.$value->type_project.'</option>';
+                    }
+                    echo '</select> 
                     <button id="b1" class="btn add-more_project" type="button">+</button></div>
                 </div>
             <br>
@@ -877,7 +896,13 @@ echo '<tr>
                 <div class="input-append">
                     <div id="field_h"><span id="field_h1">
                     <input autocomplete="off" class="input"  name="prof_h_name1" type="text" placeholder="نام هاست" data-items="8"/>
-                    <input autocomplete="off" class="input"  id="datepicker1" name="prof_h_date1" type="text" placeholder="تاریخ هاست" data-items="8"/></span>
+                    <input autocomplete="off" class="input"  id="datepicker1" name="prof_h_date1" type="text" placeholder="تاریخ هاست" data-items="8"/>
+                    <select class="input"  name="prof_h_type1" >
+                    <option value="0">نوع هاست انتخاب کنید</option>';
+                    foreach ($type_host as $key => $value) {
+                            echo '<option value="'.$value->id.'">'.$value->name_panel.'</option>';
+                    }
+                    echo '</select> </span>
                     <button id="b2" class="btn add-more_host" type="button">+</button></div>
                 </div>
             <br>

@@ -28,5 +28,29 @@ class AdduserfrontendViewAdduserfrontend extends JViewLegacy {
         $this->us = JFactory::getUser($this->userids);
         parent::display($tpl);
     }
+    function type_project(){
+        $db = JFactory::getDBO();
+        $query_project="SELECT * FROM #__trn_type_project";
+        $db->setQuery($query_project);
+        $db->query();
+        $rows = $db->getNumRows();
+        if($rows)
+        $list=$db->loadObjectlist();
+        else
+            $list=false;
+        return $list;
+    }
+    function type_host(){
+        $db = JFactory::getDBO();
+        $query_project="SELECT * FROM #__trn_panel";
+        $db->setQuery($query_project);
+        $db->query();
+        $rows = $db->getNumRows();
+        if($rows)
+        $list=$db->loadObjectlist();
+        else
+            $list=false;
+        return $list;
+    }
 }
 ?>
