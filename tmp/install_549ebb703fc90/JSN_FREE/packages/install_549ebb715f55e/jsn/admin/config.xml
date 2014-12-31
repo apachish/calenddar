@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="fieldlist"
+		label="COM_JSN_CONFIG_FIELD_SETTINGS_LABEL"
+		description="COM_JSN_CONFIG_FIELD_SETTINGS_DESC">
+		
+		<field 
+			name="logintype" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_LOGINTYPE"
+			description="COM_JSN_CONFIG_LOGINTYPE_DESC"
+			default="USERNAME"
+		>
+			<option value="USERNAME">COM_JSN_CONFIG_LOGINTYPE_USERNAME</option>
+			<option value="USERNAMEMAIL">COM_JSN_CONFIG_LOGINTYPE_USERNAMEMAIL</option>
+			<option value="MAIL">COM_JSN_CONFIG_LOGINTYPE_MAIL</option>
+		</field>
+		
+		<field 
+			name="namestyle" 
+			type="list"
+			label="COM_JSN_CONFIG_NAMESTYLE"
+			description="COM_JSN_CONFIG_NAMESTYLE_DESC"
+			default="FIRSTNAME_LASTNAME"
+		>
+			<option value="FIRSTNAME_LASTNAME">COM_JSN_CONFIG_NAMESTYLE_FIRSTNAME_LASTNAME</option>
+			<option value="FIRSTNAME_SECONDNAME_LASTNAME">COM_JSN_CONFIG_NAMESTYLE_FIRSTNAME_SECONDNAME_LASTNAME</option>
+			<option value="FIRSTNAME">COM_JSN_CONFIG_NAMESTYLE_FIRSTNAME</option>
+		</field>
+		
+		<field 
+			name="formatname" 
+			type="list"
+			label="COM_JSN_CONFIG_FORMATNAME"
+			description="COM_JSN_CONFIG_FORMATNAME_DESC"
+			default="NAME"
+		>
+			<option value="NAME">COM_JSN_CONFIG_FORMATNAME_NAME</option>
+			<option value="USERNAME">COM_JSN_CONFIG_FORMATNAME_USERNAME</option>
+			<option value="NAMEUSERNAME">COM_JSN_CONFIG_FORMATNAME_NAMEUSERNAME</option>
+			<option value="USERNAMENAME">COM_JSN_CONFIG_FORMATNAME_USERNAMENAME</option>
+		</field>
+		
+		<field 
+			name="avatar" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_AVATAR"
+			description="COM_JSN_CONFIG_AVATAR_DESC"
+			default="1"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field 
+			name="status" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_STATUS"
+			description="COM_JSN_CONFIG_STATUS_DESC"
+			default="1"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field 
+			name="confirmusermail" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_CONFIRMUSERMAIL"
+			description="COM_JSN_CONFIG_CONFIRMUSERMAIL_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field
+			name="passwordstrengthmeter"
+			label="COM_JSN_CONFIG_PASSWORDSTRENGTHMETER"
+			description ="COM_JSN_CONFIG_PASSWORDSTRENGTHMETER_DESC"
+			class="btn-group"
+			type="radio"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field 
+			name="hideempty" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_HIDEEMPTY"
+			description="COM_JSN_CONFIG_HIDEEMPTY_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field 
+			name="forcerequired" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_FORCEREQUIRED"
+			description="COM_JSN_CONFIG_FORCEREQUIRED_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field
+			name="firstLoginUrl"
+			type="menuitem"
+			label="COM_JSN_CONFIG_FIRSTLOGINURL"
+			description="COM_JSN_CONFIG_FIRSTLOGINURL_DESC"
+			>
+			<option value="">JCURRENT</option>
+		</field>
+		
+		<field
+			name="loginUrl"
+			type="menuitem"
+			label="COM_JSN_CONFIG_LOGINURL"
+			description="COM_JSN_CONFIG_LOGINURL_DESC"
+			>
+			<option value="">JCURRENT</option>
+		</field>
+		
+		<field 
+			name="tabs" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_TABS"
+			description="COM_JSN_CONFIG_TABS_DESC"
+			default="1"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field
+			name="profileACL"
+			type="list"
+			label="COM_JSN_CONFIG_PROFILEACL"
+			description="COM_JSN_CONFIG_PROFILEACL_DESC"
+			default="2"
+			>
+			<option value="0">COM_JSN_PRIVATE</option>
+			<option value="1">COM_JSN_REGISTERED</option>
+			<option value="2">COM_JSN_PUBLIC</option>
+			<option value="3">COM_JSN_CUSTOMACCESS</option>
+
+		</field>
+		
+		<field
+			name="profileACLcustom"
+			type="accesslevel"
+			label="COM_JSN_CONFIG_PROFILEACLCUSTOM"
+			description="COM_JSN_CONFIG_PROFILEACLCUSTOM_DESC"
+			>
+
+		</field>
+		
+		<field 
+			name="bootstrap" 
+			type="radio" class="btn-group"
+			label="Include Bootstrap CSS files"
+			description="Use only if you have problem with your template"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<!-- <field
+			name="field_layout"
+			type="componentlayout"
+			label="COM_JSN_CONFIG_FIELDGED_ITEMS_FIELD_LAYOUT_LABEL"
+			description="COM_JSN_CONFIG_FIELDGED_ITEMS_FIELD_LAYOUT_DESC"
+			menuitems="true"
+			extension="com_jsn"
+			view="field"
+		/>
+	
+		<field 
+			name="show_field_title" 
+			type="radio" class="btn-group"
+			label="COM_JSN_SHOW_FIELD_TITLE_LABEL"
+			description="COM_JSN_SHOW_FIELD_TITLE_DESC"
+			default="0"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field 
+			name="field_list_show_field_image" 
+			type="radio" class="btn-group"
+			description="COM_JSN_SHOW_FIELD_IMAGE_DESC"
+			label="COM_JSN_SHOW_FIELD_IMAGE_LABEL"
+			default="1"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field 
+			name="field_list_show_field_description" 
+			type="radio" 
+			class="btn-group"
+			description="COM_JSN_SHOW_FIELD_DESCRIPTION_DESC"
+			label="COM_JSN_SHOW_FIELD_DESCRIPTION_LABEL"
+			default="1"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field 
+			name="field_list_image" 
+			type="media"
+			description="COM_JSN_FIELD_LIST_MEDIA_DESC"
+			label="COM_JSN_FIELD_LIST_MEDIA_LABEL"
+		/>
+		
+		<field 
+			name="show_field_num_items" 
+			type="radio" 
+			class="btn-group"
+			label="COM_JSN_NUMBER_FIELD_ITEMS_LABEL"
+			description="COM_JSN_NUMBER_FIELD_ITEMS_DESC"
+			default="0"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+	
+		<field name="field_list_orderby"
+			type="list"
+			default="title"
+			label="JGLOBAL_FIELD_FIELD_ORDERING_LABEL"
+			description="JGLOBAL_FIELD_FIELD_ORDERING_DESC">
+				<option value="title">JGLOBAL_TITLE</option>
+				<option value="match_count">COM_JSN_MATCH_COUNT</option>
+				<option value="created_time">JGLOBAL_CREATED_DATE</option>
+				<option value="modified_time">JGLOBAL_MODIFIED_DATE</option>
+				<option value="publish_up">JGLOBAL_PUBLISHED_DATE</option>
+		</field>
+
+		<field 
+			name="field_list_orderby_direction" 
+			type="radio" 
+			class="btn-group"
+			description="JGLOBAL_ORDER_DIRECTION_DESC"
+			label="JGLOBAL_ORDER_DIRECTION_LABEL"
+			default="ASC"
+		>
+			<option value="ASC">JGLOBAL_ORDER_ASCENDING</option>
+			<option value="DESC">JGLOBAL_ORDER_DESCENDING</option>
+		</field>
+
+		<field 
+			name="show_headings" 
+			type="radio"
+			class="btn-group"
+			default="1"			
+			description="JGLOBAL_SHOW_HEADINGS_DESC"
+			label="JGLOBAL_SHOW_HEADINGS_LABEL"
+		>
+
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field 
+			name="field_list_show_date"
+			type="list"
+			default="0"
+			label="JGLOBAL_SHOW_DATE_LABEL"
+			description="JGLOBAL_SHOW_DATE_DESC"
+		>
+				<option value="0">JHIDE</option>
+				<option value="created">JGLOBAL_CREATED</option>
+				<option value="modified">JGLOBAL_MODIFIED</option>
+				<option value="published">JPUBLISHED</option>
+		</field>
+		
+		<field 
+			name="field_list_show_item_image" 
+			type="radio" 
+			class="btn-group"
+			description="COM_JSN_SHOW_ITEM_IMAGE_DESC"
+			label="COM_JSN_SHOW_ITEM_IMAGE_LABEL"
+			default="1"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field 
+			name="field_list_show_item_description" 
+			type="list"
+			label="COM_JSN_FIELD_LIST_SHOW_ITEM_DESCRIPTION_LABEL"
+			description="COM_JSN_FIELD_LIST_SHOW_ITEM_DESCRIPTION_DESC"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field
+			name="field_list_item_maximum_characters"
+			type="text"
+			filter="integer"
+			label="COM_JSN_LIST_MAX_CHARACTERS_LABEL"
+			description="COM_JSN_LIST_MAX_CHARACTERS_DESC">
+		</field>
+
+	</fieldset>
+	
+	<fieldset
+		name="fieldselection"
+		label="COM_JSN_CONFIG_SELECTION_SETTINGS_LABEL"
+		description="COM_JSN_CONFIG_SELECTION_SETTINGS_DESC">
+		
+		<field 
+			name="return_any_or_all" 
+			type="radio" 
+			class="btn-group"
+			label="COM_JSN_SEARCH_TYPE_LABEL"
+			description="COM_JSN_SEARCH_TYPE_DESC"
+			default="1"
+		>
+			<option value="0">COM_JSN_ALL</option>
+			<option value="1">COM_JSN_ANY</option>
+		</field>
+		
+		<field 
+			name="include_children" 
+			type="radio" 
+			class="btn-group"
+			description="COM_JSN_INCLUDE_CHILDREN_DESC"
+			label="COM_JSN_INCLUDE_CHILDREN_LABEL"
+			default="0"
+		>
+			<option value="0">COM_JSN_EXCLUDE</option>
+			<option value="1">COM_JSN_INCLUDE</option>
+		</field>
+		
+		<field
+			name="maximum"
+			type="text"
+			default="200"
+			filter="integer"
+			label="COM_JSN_LIST_MAX_LABEL"
+			description="COM_JSN_LIST_MAX_DESC">
+		</field>
+		
+		<field 
+			name="field_list_language_filter"
+			type="contentlanguage"
+			default="all"
+			label="COM_JSN_FIELD_LANGUAGE_FILTER_LABEL"
+			description="COM_JSN_FIELD_LANGUAGE_FILTER_DESC">
+				<option value="all">JALL</option>
+				<option value="current_language">JCURRENT</option>
+		</field>
+
+		
+	</fieldset>	
+
+	<fieldset
+		name="allfields"
+		label="COM_JSN_CONFIG_ALL_FIELDS_SETTINGS_LABEL"
+		description="COM_JSN_CONFIG_ALL_FIELDS_SETTINGS_DESC">
+
+		<field
+			name="fields_layout" 
+			type="componentlayout"
+			label="COM_JSN_CONFIG_ALL_FIELDS_FIELD_LAYOUT_LABEL"
+			description="COM_JSN_CONFIG_ALL_FIELDS_FIELD_LAYOUT_DESC"
+			menuitems="true"
+			extension="com_jsn"
+			view="fields"
+		/>
+
+		<field 
+			name="all_fields_orderby"
+			type="list"
+			default="title"
+			label="JGLOBAL_FIELD_FIELD_ORDERING_LABEL"
+			description="JGLOBAL_FIELD_FIELD_ORDERING_DESC"
+		>
+				<option value="title">JGLOBAL_TITLE</option>
+				<option value="hits">JGLOBAL_HITS</option>
+				<option value="created_time">JGLOBAL_CREATED_DATE</option>
+				<option value="modified_time">JGLOBAL_MODIFIED_DATE</option>
+				<option value="publish_up">JGLOBAL_PUBLISHED_DATE</option>
+		</field>
+
+		<field 
+			name="all_fields_orderby_direction" 
+			type="radio" 
+			class="btn-group"
+			description="JGLOBAL_ORDER_DIRECTION_DESC"
+			label="JGLOBAL_ORDER_DIRECTION_LABEL"
+			default="ASC"
+		>
+			<option value="ASC">JGLOBAL_ORDER_ASCENDING</option>
+			<option value="DESC">JGLOBAL_ORDER_DESCENDING</option>
+		</field>
+
+		<field 
+			name="all_fields_show_field_image" 
+			type="radio" 
+			class="btn-group"
+			description="COM_JSN_SHOW_ITEM_IMAGE_DESC"
+			label="COM_JSN_SHOW_ITEM_IMAGE_LABEL"
+			default="1"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field 
+			name="all_fields_show_field_descripion" 
+			type="radio" 
+			class="btn-group"
+			description="COM_JSN_SHOW_ITEM_DESCRIPTION_DESC"
+			label="COM_JSN_SHOW_ITEM_DESCRIPTION_LABEL"
+			default="1"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field
+			name="all_fields_field_maximum_characters"
+			type="text"
+			filter="integer"
+			label="COM_JSN_LIST_MAX_CHARACTERS_LABEL"
+			description="COM_JSN_LIST_MAX_CHARACTERS_DESC"
+		/>
+		
+		<field 
+			name="all_fields_show_field_hits" 
+			type="radio" 
+			class="btn-group"
+			description="COM_JSN_FIELD_CONFIG_HITS_DESC"
+			label="JGLOBAL_HITS"
+			default="0"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+	</fieldset>
+		<fieldset
+		name="shared"
+		label="COM_JSN_CONFIG_SHARED_SETTINGS_LABEL"
+		description="COM_JSN_CONFIG_SHARED_SETTINGS_DESC">
+		
+		<field
+			name="filter_field"
+			type="radio"
+			class="btn-group"
+			default="0"
+			description="JGLOBAL_FILTER_FIELD_DESC"
+			label="JGLOBAL_FILTER_FIELD_LABEL"
+			>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+		</field>
+
+		<field 
+			name="show_pagination_limit" 
+			type="radio"
+			default="1"
+			class="btn-group"
+			description="JGLOBAL_DISPLAY_SELECT_DESC"
+			label="JGLOBAL_DISPLAY_SELECT_LABEL"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field 
+			name="show_pagination" 
+			type="list"
+			default="2"
+			description="JGLOBAL_PAGINATION_DESC"
+			label="JGLOBAL_PAGINATION_LABEL"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+			<option value="2">JGLOBAL_AUTO</option>
+		</field>
+
+		<field
+			name="show_pagination_results"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="JGLOBAL_PAGINATION_RESULTS_LABEL"
+			description="JGLOBAL_PAGINATION_RESULTS_DESC"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+	</fieldset>
+	
+	<fieldset
+		name="data_entry"
+		label="COM_JSN_CONFIG_DATA_ENTRY_SETTINGS_LABEL"
+		description="COM_JSN_CONFIG_DATA_ENTRY_SETTINGS_DESC">
+		
+		<field 
+			name="field_field_ajax_mode" 
+			type="radio" 
+			class="btn-group"
+			description="COM_JSN_FIELD_FIELD_MODE_DESC"
+			label="COM_JSN_FIELD_FIELD_MODE_LABEL"
+			default="1"
+		>
+			<option value="1">COM_JSN_FIELD_FIELD_MODE_AJAX</option>
+			<option value="0">COM_JSN_FIELD_FIELD_MODE_NESTED</option>
+		</field>
+		
+	
+		
+	</fieldset>
+	
+	<fieldset 
+		name="integration"
+		label="JGLOBAL_INTEGRATION_LABEL"
+		description="COM_JSN_CONFIG_INTEGRATION_SETTINGS_DESC"
+	>
+
+		<field
+			name="show_feed_link"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="JGLOBAL_SHOW_FEED_LINK_LABEL"
+			description="JGLOBAL_SHOW_FEED_LINK_DESC">
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+		</field>  -->
+
+	</fieldset>
+
+	<fieldset
+		name="socialconnect"
+		label="COM_JSM_CONFIG_SOCIALCONNECT"
+		>
+		<field name="sp0" label="COM_JSM_CONFIG_SOCIALCONNECT_GENERAL" type="spacer" />
+		<field 
+			name="socialconnect_profilelink" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_SOCIALCONNECTPROFILELINK"
+			description="COM_JSN_CONFIG_SOCIALCONNECTPROFILELINK_DESC"
+			default="1"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="sp1" label="COM_JSN_CONFIG_FACEBOOK" type="spacer" />
+		<field 
+			name="facebook_enabled" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_FACEBOOKENABLE"
+			description="COM_JSN_CONFIG_FACEBOOKENABLE_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field 
+			name="facebook_application_id" 
+			type="text"
+			label="COM_JSN_CONFIG_FACEBOOKAPPID"
+			description="COM_JSN_CONFIG_FACEBOOKAPPID_DESC"
+			default=""
+		/>
+		<field 
+			name="facebook_application_secret" 
+			type="text"
+			label="COM_JSN_CONFIG_FACEBOOKAPPSECRET"
+			description="COM_JSN_CONFIG_FACEBOOKAPPSECRET_DESC"
+			default=""
+		/>
+		<field 
+			name="facebook_usergroups" 
+			multiple="true" 
+			type="usergroup"
+			label="COM_JSN_CONFIG_SC_USERGROUP"
+			description="COM_JSN_CONFIG_SC_USERGROUP_DESC"
+			default=""
+		/>
+		<field name="sp2" label="COM_JSN_CONFIG_TWITTER" type="spacer" />
+		<field 
+			name="twitter_enabled" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_TWITTERENABLE"
+			description="COM_JSN_CONFIG_TWITTERENABLE_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field 
+			name="twitter_consumer_key" 
+			type="text"
+			label="COM_JSN_CONFIG_TWITTERCONSUMERKEY"
+			description="COM_JSN_CONFIG_TWITTERCONSUMERKEY_DESC"
+			default=""
+		/>
+		<field 
+			name="twitter_consumer_secret" 
+			type="text"
+			label="COM_JSN_CONFIG_TWITTERCONSUMERSECRET"
+			description="COM_JSN_CONFIG_TWITTERCONSUMERSECRET_DESC"
+			default=""
+		/>
+		<field 
+			name="twitter_usergroups" 
+			multiple="true" 
+			type="usergroup"
+			label="COM_JSN_CONFIG_SC_USERGROUP"
+			description="COM_JSN_CONFIG_SC_USERGROUP_DESC"
+			default=""
+		/>
+		<field name="sp3" label="COM_JSN_CONFIG_GOOGLE" type="spacer" />
+		<field 
+			name="google_enabled" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_GOOGLEENABLE"
+			description="COM_JSN_CONFIG_GOOGLEENABLE_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field 
+			name="google_client_id" 
+			type="text"
+			label="COM_JSN_CONFIG_GOOGLECLIENTID"
+			description="COM_JSN_CONFIG_GOOGLECLIENTID_DESC"
+			default=""
+		/>
+		<field 
+			name="google_client_secret" 
+			type="text"
+			label="COM_JSN_CONFIG_GOOGLECLIENTSECRET"
+			description="COM_JSN_CONFIG_GOOGLECLIENTSECRET_DESC"
+			default=""
+		/>
+		<field 
+			name="google_api_key" 
+			type="text"
+			label="COM_JSN_CONFIG_GOOGLEAPIKEY"
+			description="COM_JSN_CONFIG_GOOGLEAPIKEY_DESC"
+			default=""
+		/>
+		<field 
+			name="google_usergroups" 
+			multiple="true" 
+			type="usergroup"
+			label="COM_JSN_CONFIG_SC_USERGROUP"
+			description="COM_JSN_CONFIG_SC_USERGROUP_DESC"
+			default=""
+		/>
+		<field name="sp4" label="COM_JSN_CONFIG_LINKEDIN" type="spacer" />
+		<field 
+			name="linkedin_enabled" 
+			type="radio" class="btn-group"
+			label="COM_JSN_CONFIG_LINKEDINENABLE"
+			description="COM_JSN_CONFIG_LINKEDINENABLE_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field 
+			name="linkedin_api_key" 
+			type="text"
+			label="COM_JSN_CONFIG_LINKEDINAPIKEY"
+			description="COM_JSN_CONFIG_LINKEDINAPIKEY_DESC"
+			default=""
+		/>
+		<field 
+			name="linkedin_secret_key" 
+			type="text"
+			label="COM_JSN_CONFIG_LINKEDINSECRETKEY"
+			description="COM_JSN_CONFIG_LINKEDINSECRETKEY_DESC"
+			default=""
+		/>
+		<field 
+			name="linkedin_usergroups"
+			multiple="true" 
+			type="usergroup"
+			label="COM_JSN_CONFIG_SC_USERGROUP"
+			description="COM_JSN_CONFIG_SC_USERGROUP_DESC"
+			default=""
+		/>
+		
+	</fieldset>
+
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
+
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			filter="rules"
+			validate="rules"
+			component="com_jsn"
+			section="component" />
+	</fieldset>
+</config>

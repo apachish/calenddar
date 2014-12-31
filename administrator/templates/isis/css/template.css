@@ -7487,7 +7487,7 @@ html[dir=rtl] .quick-icons .nav-list [class*=" icon-"] {
 	.chzn-container,
 	.chzn-container .chzn-results,
 	.chzn-container-single .chzn-drop {
-		width: 99% !important;
+		<!--width: 99% !important;
 	}
 	.subhead-collapse.collapse {
 		height: 0;

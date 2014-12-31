@@ -128,7 +128,6 @@ class TrnModelProjects extends JModelList
                 $this->setState('list.' . $name, $value);
             }
         }
-
         // Receive & set filters
         if ($filters = $app->getUserStateFromRequest($this->context . '.filter', 'filter', array(), 'array'))
         {
@@ -189,7 +188,19 @@ $query->where('a.state = 1');
                 $query->where('( a.name_project LIKE '.$search.' )');
             }
         }
-
+        $search = $this->getState('filter.search1');
+        if (!empty($search))
+        {
+            if (stripos($search, 'id:') === 0)
+            {
+                $query->where('a.id = ' . (int) substr($search, 3));
+            }
+            else
+            {
+                $search = $db->Quote('%' . $db->escape($search, true) . '%');
+                $query->where('( a.expiration_project LIKE '.$search.' )');
+            }
+        }
         
 
         // Add the list ordering clause.

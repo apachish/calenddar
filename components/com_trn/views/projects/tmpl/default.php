@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
+//JHtml::_('formbehavior.chosen', 'select');
 
 $user = JFactory::getUser();
 $userId = $user->get('id');
@@ -24,44 +24,80 @@ $canCheckin = $user->authorise('core.manage', 'com_trn');
 $canChange = $user->authorise('core.edit.state', 'com_trn');
 $canDelete = $user->authorise('core.delete', 'com_trn');
 ?>
+    <link type="text/css" href="<?php echo JURI::root()?>components/com_adduserfrontend/assest/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
 
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/calendar.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-ar.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-fa.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+    jQuery('#filter_search1').datepicker();
+})
+</script>
 <form action="<?php echo JRoute::_('index.php?option=com_trn&view=projects'); ?>" method="post" name="adminForm" id="adminForm">
-
-    <?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
+<table  width='100%'><tr>
+<td><input name="filter[search1]" id="filter_search1" value=""  readonly='readonly' class="js-stools-search-string" placeholder="Search" type="text">
+</td><td><select name="filter[search2]" id="filter_search2"  >
+<option value='0'> انتخاب کنید</option>
+<?php 
+$variable=$this->get_list_type_project();
+foreach ($variable as $key => $value) {
+    echo '<option value="'.$value->id.'">'.$value->type_project.'</option>';
+}
+?>
+</select></td><td>
+<?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?></td></tr></table>
+    <div class="js-stools-container-filters hidden-phone clearfix" style="">
+        <?php // Load the form filters ?>
+        <?php if ($filters) : ?>
+            <?php foreach ($filters as $fieldName => $field) : ?>
+                <?php if ($fieldName != 'filter_search') : ?>
+                    <div class="js-stools-field-filter">
+                        <?php echo $field->input; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            
+        <?php endif; ?>
+    </div>
     <table class="table table-striped" id = "projectList" >
         <thead >
             <tr >
                 <?php if (isset($this->items[0]->state)): ?>
-        <th width="1%" class="nowrap center">
-            <?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
-        </th>
-    <?php endif; ?>
+                    <th class='center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_NAME_PROJECT', 'a.name_project', $listDirn, $listOrder); ?>
+                    </th>
+                <!--<th width="1%" class="nowrap center">
+                    <?php //echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
+                </th> -->
 
-    				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_CREATE_PROJECT', 'a.create_project', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_EXPIRATION_PROJECT', 'a.expiration_project', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_NAME_PROJECT', 'a.name_project', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_TYPE_PROJECT', 'a.type_project', $listDirn, $listOrder); ?>
-				</th>
+    				<th class='cetner'>
+				        <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_CREATE_PROJECT', 'a.create_project', $listDirn, $listOrder); ?>
+				    </th>
+				    <th class='center'>
+				    <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_EXPIRATION_PROJECT', 'a.expiration_project', $listDirn, $listOrder); ?>
+				    </th>
+
+				    <th class='center'>
+				    <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_TYPE_PROJECT', 'a.type_project', $listDirn, $listOrder); ?>
+				    </th>
 
 
-    <?php if (isset($this->items[0]->id)): ?>
+<!--     <?php //if (isset($this->items[0]->id)): ?>
         <th width="1%" class="nowrap center hidden-phone">
-            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+            <?php //echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
         </th>
-    <?php endif; ?>
+    <?php //endif; ?> -->
 
     				<?php if ($canEdit || $canDelete): ?>
-					<th class="center">
-				<?php echo JText::_('COM_TRN_PROJECTS_ACTIONS'); ?>
-				</th>
-				<?php endif; ?>
+					   <th class="center">
+				        <?php echo JText::_('COM_TRN_PROJECTS_ACTIONS'); ?>
+				        </th>
+				    <?php endif; ?>
+                <?php endif; ?>    
 
     </tr>
     </thead>
@@ -85,6 +121,11 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
             <?php if (isset($this->items[0]->state)): ?>
                 <?php $class = ($canEdit || $canChange) ? 'active' : 'disabled'; ?>
                 <td class="center">
+                    <a href="<?php echo JRoute::_('index.php?option=com_trn&view=project&id='.(int) $item->id); ?>">
+                    <?php echo $item->name_project; ?>
+                    </a>
+                </td>
+<!--                 <td class="center">
                     <a class="btn btn-micro <?php echo $class; ?>"
                        href="<?php echo ($canEdit || $canChange) ? JRoute::_('index.php?option=com_trn&task=projectform.publish&id=' . $item->id . '&state=' . (($item->state + 1) % 2), false, 2) : '#'; ?>">
                         <?php if ($item->state == 1): ?>
@@ -93,35 +134,27 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
                             <i class="icon-unpublish"></i>
                         <?php endif; ?>
                     </a>
-                </td>
-            <?php endif; ?>
+                </td> -->
 
-            				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'projects.', $canCheckin); ?>
-				<?php endif; ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_trn&view=project&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->create_project); ?></a>
+            	<td class="center">
+                    <!--<?php //if (isset($item->checked_out) && $item->checked_out) : ?>
+					<?php //echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'projects.', $canCheckin); ?>
+				    <?php //endif; ?> -->
+				    <?php echo $this->escape($item->create_project); ?>
 				</td>
-				<td>
-
+				<td class="center">
 					<?php echo $item->expiration_project; ?>
 				</td>
-				<td>
-
-					<?php echo $item->name_project; ?>
+				<td class="center">
+					<?php echo $this->get_name_project($item->type_project); ?>
 				</td>
-				<td>
-
-					<?php echo $item->type_project; ?>
-				</td>
-
+<!-- 
 
             <?php if (isset($this->items[0]->id)): ?>
                 <td class="center hidden-phone">
                     <?php echo (int)$item->id; ?>
                 </td>
-            <?php endif; ?>
+            <?php endif; ?> -->
 
             				<?php if ($canEdit || $canDelete): ?>
 					<td class="center">
@@ -133,6 +166,7 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
 						<?php endif; ?>
 					</td>
 				<?php endif; ?>
+            <?php endif; ?>
 
         </tr>
     <?php endforeach; ?>

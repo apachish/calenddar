@@ -1,0 +1,40 @@
+img.avatar{max-width:100%;height:auto;padding:3px;background:white;border:1px solid #ddd;}
+#member-profile .control-label .optional, #member-registration .control-label .optional{display:none;}
+.profile .page-header{margin-bottom:10px;}
+.profile h1{display:inline-block;}
+.profilehr{margin-top:0px;}
+/* Author */
+.createdby img.avatar{margin:5px 0;height:30px;border:none;padding:0px;}
+/* List */
+.jsn_listprofile .avatar {width: 50px;float: left;margin-right: 10px;}
+.jsn_listprofile .customfields,.jsn_listprofile .status,.jsn_listprofile h4{margin-left:66px;}
+.jsn_listprofile{padding-top:10px;padding-bottom:10px;}
+.listusers .row-fluid{border-top:1px solid #eee;}
+.listusers .row-fluid:first-child{border:none;}
+/* Privacy */
+#member-profile .control-group.privacy,#member-profile .control-group.privacy .controls,
+#member-registration .control-group.privacy,#member-registration .control-group.privacy .controls,
+#user-form .control-group.privacy,#user-form .control-group.privacy .controls
+{margin:0px;height:0px;padding:0px;text-align:right;min-height:0px;width:100%;}
+#member-profile .control-group.privacy .control-label,#member-registration .control-group.privacy .control-label,#user-form .control-group.privacy .control-label{display:none;}
+.control-group.privacy .controls .btn{z-index:10;position:relative;margin-top:3px;margin-right:4px;}
+.control-group.privacy .controls ul{z-index:20;margin-top:30px;text-align:left;margin-right:4px;}
+.red{color:red;}
+.orange{color:orange;}
+.green{color:green;}
+@media (max-width: 480px){
+	.control-group.privacy .controls .btn{margin-top:26px;}
+}
+.form-group.privacy .controls .btn{margin-top:5px;margin-right:6px;} /* Only Bootstrap 3 */
+.form-group.privacy .controls.col-md-10 ul.dropdown-menu{margin-right:6px;}
+@media (max-width: 992px){/* Only Bootstrap 3 */
+	.form-group.privacy .controls.col-md-10 a.btn{margin-top:38px;}
+	.form-group.privacy .controls.col-md-10 ul.dropdown-menu{margin-top:65px;}
+}
+/* Maps */
+.jsn_map{height:300px;margin:10px 0;border:10px solid #ddd}
+/* Search */
+.bsdate{display:block !important;}
+.bsdatesearch,.numericsearch{margin-bottom:5px;}
+/* Registration */
+.jsn_registration_controls{margin-left:0px !important;}

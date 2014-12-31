@@ -1,0 +1,35 @@
+body{border-top:none !important;}
+.imgSelect-container,
+.imgSelect-upload,
+.imgSelect-webcam,
+.imgSelect-alert,
+.imgSelect-actions,
+.imgSelect-actions .new-snap,
+.imgSelect-actions .capture {
+	display: none;
+}
+.imgSelect-alert {
+	margin-top: 10px;
+	clear:both;
+}
+.imgSelect-alert {
+	margin-bottom: 10px;
+	padding: 8px 0px 8px 10px;
+}
+.imgSelect-upload,
+.imgSelect-webcam {
+	margin-bottom: 10px;
+}
+.imgSelect-container img {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-webkit-box-shadow: 0 1px 2px #CCC;
+	-moz-box-shadow: 0 1px 2px #ccc;
+	box-shadow: 0 1px 2px #ccc;
+}
+.imgSelect-webcam .capture {
+	position: absolute;
+	margin-top: -33px;
+}
+.imgSelect-container{padding:10px 0;clear:both;}

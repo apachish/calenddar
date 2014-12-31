@@ -28,13 +28,13 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
 <form action="<?php echo JRoute::_('index.php?option=com_trn&view=domains'); ?>" method="post" name="adminForm" id="adminForm">
 
     <?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
-    <table class="table table-striped" id = "domainList" >
+    <table class="table table-striped"  id = "domainList" >
         <thead >
             <tr >
                 <?php if (isset($this->items[0]->state)): ?>
-        <th width="1%" class="nowrap center">
-            <?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
-        </th>
+        <!--<th width="1%" class="nowrap center">
+            <?php //echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
+        </th>-->
     <?php endif; ?>
 
     				<th class='left'>
@@ -79,7 +79,7 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
 
         <tr class="row<?php echo $i % 2; ?>">
 
-            <?php if (isset($this->items[0]->state)): ?>
+            <?php /*if (isset($this->items[0]->state)): ?>
                 <?php $class = ($canEdit || $canChange) ? 'active' : 'disabled'; ?>
                 <td class="center">
                     <a class="btn btn-micro <?php echo $class; ?>"
@@ -91,7 +91,7 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
                         <?php endif; ?>
                     </a>
                 </td>
-            <?php endif; ?>
+            <?php endif; */?>
 
             				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out) : ?>

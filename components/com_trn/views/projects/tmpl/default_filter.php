@@ -56,16 +56,5 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
         </div>
     </div>
     <!-- Filters div -->
-    <div class="js-stools-container-filters hidden-phone clearfix" style="">
-        <?php // Load the form filters ?>
-        <?php if ($filters) : ?>
-            <?php foreach ($filters as $fieldName => $field) : ?>
-                <?php if ($fieldName != 'filter_search') : ?>
-                    <div class="js-stools-field-filter">
-                        <?php echo $field->input; ?>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+
 </div>

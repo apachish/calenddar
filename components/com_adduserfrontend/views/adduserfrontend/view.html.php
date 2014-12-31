@@ -52,5 +52,17 @@ class AdduserfrontendViewAdduserfrontend extends JViewLegacy {
             $list=false;
         return $list;
     }
+    function get_filde(){
+        $db = JFactory::getDBO();
+        $query_filde="SELECT * FROM #__jsn_fields where core=0 and published=1";
+        $db->setQuery($query_filde);
+        $db->query();
+        $rows = $db->getNumRows();
+        if($rows)
+            $list_filde=$db->loadObjectlist();
+        else
+            $list_filde=false;
+        return $list_filde;
+    }
 }
 ?>

@@ -636,7 +636,7 @@ if($groupid > 2) { // If at least an author
 // Show upload form
 echo '<script type="text/javascript">  
 function validate_required(field,alerttxt)
-{ 
+{
 with (field)
   {
   if (value==null||value=="")
@@ -649,6 +649,17 @@ with (field)
    }
   }
 }
+function valide_extera(filde,alerttxt){
+alert(filde);
+
+if(!jQuery("input:text[name="+filde+"]").val){
+  alert(alerttxt);return false;
+
+}else{
+   return true;
+
+}
+}
 function is_valid_email(email,alerttxt) {
    var reg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
    var address = email.value;
@@ -660,6 +671,7 @@ function is_valid_email(email,alerttxt) {
 }
 function validate_form(thisform)
 {
+
 with (thisform)
  {'; 
  
@@ -687,7 +699,15 @@ username.focus();return false;}';
 if( $passwordmode == "1" ) {
 echo'if (validate_required(password,"'.JText::_( 'N0_PASSWORD').'")==false) {
 group.focus();return false;}';
-}	
+}
+    if($extera_filde){
+        foreach($extera_filde as $value_extera){
+                echo 'alert('.$value_extera.')';
+                echo'if ( valide_extera('.$value_extera->alias.',"'.JText::_( 'NO_EXTERA').'")==false) {
+                group.focus();return false;}';
+
+        }
+    }
 if( $usertypemode == "1" ) {
 echo'if (validate_required(group,"'.JText::_( 'NO_GROUP').'")==false) {	
 group.focus();return false;}';
@@ -853,7 +873,40 @@ echo '<tr>
 <td><input type="text" name="password" value="'.$savedshowpass.'" /></td>
 </tr>';
 }
-   
+$extera_filde=$this->get_filde();
+    if($extera_filde){
+        foreach($extera_filde as $value_extera){
+            $params=json_decode($value_extera->params);
+            $privaite='false';
+            if($params->privacy){
+                if($params->privacy_default==99){
+                    $privaite='true';
+                }else{
+                    $privaite='false';
+
+                }
+            }else{
+                $privaite='false';
+            }
+                echo '<tr><td>';
+                if(!$params->hidetitle)
+                    echo $value_extera->title;
+                if($value_extera->required){
+                    echo '*';
+                }
+                echo '</td>';
+                echo '<td><input  type="'.$value_extera->type.'"';
+                if($params->text_readonly){
+                    echo 'readonly="readonly"';
+                }
+                if($params->text_maxlength){
+                    echo 'maxlength="'.$params->text_maxlength.'"';
+                }
+                echo 'name="'.$value_extera->alias.'"</td></tr>';
+
+
+        }
+    }
 echo '<tr>
 <td></td>
 <td></td>
