@@ -25,6 +25,9 @@ class TrnController extends JControllerLegacy {
      */
     public function display($cachable = false, $urlparams = false) {
         require_once JPATH_COMPONENT . '/helpers/trn.php';
+        $this->reminder_project();
+                $this->reminder_host();
+        $this->reminder_domain();
 
         $view = JFactory::getApplication()->input->getCmd('view', 'projects');
         JFactory::getApplication()->input->set('view', $view);
@@ -32,6 +35,64 @@ class TrnController extends JControllerLegacy {
         parent::display($cachable, $urlparams);
 
         return $this;
+    }
+    public function reminder_project(){
+        $db =& JFactory::getDBO();
+        $user = JFactory::getUser();
+        $year=date("Y");
+        $month=date("m");
+        $day=date("d");
+        $shamsi_now=$this->hijricalender ( $year , $month , $day );
+        $query_type="SELECT * FROM #__trn_project";
+        $db->setQuery($query_type);
+        $type=$db->loadObjectlist();
+        foreach ($type as $key => $value) {
+                        $reminde_project=$this->dif_date($value->expiration_project,$shamsi_now);
+                        if($reminde_project){
+                        $query_rem="UPDATE #__trn_project SET reminde=".$reminde_project." WHERE id=".$value->id;
+                        $db->setQuery($query_rem);
+                         $db->query();
+                        }
+        }
+    }
+    public function reminder_host(){
+        $db =& JFactory::getDBO();
+        $user = JFactory::getUser();
+        $year=date("Y");
+        $month=date("m");
+        $day=date("d");
+        $shamsi_now=$this->hijricalender ( $year , $month , $day );
+        $query_type="SELECT * FROM #__trn_host";
+        $db->setQuery($query_type);
+        $type=$db->loadObjectlist();
+        foreach ($type as $key => $value) {
+                        $reminde_host=$this->dif_date($value->expiration_host,$shamsi_now);
+                        if($reminde_host){
+                            $query_rem="UPDATE #__trn_host SET reminde=".$reminde_host." WHERE id=".$value->id;
+                            $db->setQuery($query_rem);
+                            $db->query();
+                        }
+                        
+        }
+    }
+    public function reminder_domain(){
+        $db =& JFactory::getDBO();
+        $user = JFactory::getUser();
+        $year=date("Y");
+        $month=date("m");
+        $day=date("d");
+        $shamsi_now=$this->hijricalender ( $year , $month , $day );
+        $query_type="SELECT * FROM #__trn_domain";
+        $db->setQuery($query_type);
+        $type=$db->loadObjectlist();
+        foreach ($type as $key => $value) {
+                        $reminde_domain=$this->dif_date($value->expiration_domain,$shamsi_now);
+                        if($reminde_domain){
+                        $query_rem="UPDATE #__trn_domain SET reminde=".$reminde_domain." WHERE id=".$value->id;
+                        $db->setQuery($query_rem);
+                            $db->query();
+                    }
+        }
     }
     function typeproject(){
         $model = &$this->getModel('projects');
@@ -231,42 +292,279 @@ if($day<=26){
             $iDaySum = $iDaySum+1;
         return $iDaySum;
     }
-//---------------------------------------------------------------------
-    public function hijricalender ( $year , $month , $day )
-    {       
 
-        $PrevMonthDayHjr = array(0,31,62,93,124,155,186,216,246,276,306,336);
-        if ( $year < 1995 || $month < 1 || $month > 12 || $day > 31 || $day < 1 )
-            return 0;
-        $daysum = $this->BaseFromMiladiDate($year , $month , $day );
-        $iaddyear=0;
-        while ($daysum >0 )
-        {
-            $daysum = $daysum -365;
-            if (($iaddyear % 4 ) == 0 )
-                $daysum--;
-            $iaddyear++;
+//---------------------------------------------------------------------
+function hijricalender ( $year , $month , $day )
+{
+    $PrevMonthDayHjr = array(0,31,62,93,124,155,186,216,246,276,306,336);
+    if ( $year < 1995 || $month < 1 || $month > 12 || $day > 31 || $day < 1 )
+        return 0;
+    $daysum = $this->BaseFromMiladiDate($year , $month , $day );
+    $iaddyear=0;
+    while ($daysum >0 )
+    {
+        $daysum = $daysum -365;
+        if (($iaddyear % 4 ) == 0 )
+            $daysum--;
+        $iaddyear++;
+    }
+    if ( $daysum <0 )
+    {
+        $iaddyear--;
+        $daysum = $daysum+365;
+        if (($iaddyear % 4 ) == 0 )
+            $daysum++;
+    }
+    $itodayyear = 1375+$iaddyear;
+    $itodaymonth=1;
+    while ( $daysum >= $PrevMonthDayHjr[$itodaymonth])
+    {
+        $itodaymonth++;
+        if( $itodaymonth ==12 )
+            break;
+    }
+    $daysum=$daysum - $PrevMonthDayHjr[$itodaymonth-1];
+    $itodayday = 1 + $daysum;
+    $isodate = sprintf("%04d/% 02d/% 02d",$itodayyear ,$itodaymonth, $itodayday);
+    return  $isodate;
+}
+
+function dif_date($day1,$day2){
+    $years1=substr($day1,0,4);
+    $month1=substr($day1,5,2);
+    $day1=substr($day1,8,2);
+    $years2=substr($day2,0,4);
+    $month2=substr($day2,5,2);
+    $day2=substr($day2,8,2);
+    $years_kabise1=$this->kabise($years1);
+    $years_kabise2=$this->kabise($years2);
+
+
+    $dif=0;
+    if($years1-$years2==0){
+        if(($month1-$month2)>1 ){
+            $dif=$month1-$month2;
+            $dif-=1;
+            if($month2<=6){
+                $reminde=31-$day2;
+                $reminde+=$day1;
+
+            }elseif($month2>=7  && $month2<=11 ){
+                $reminde=30-$day2;
+                $reminde+=$day1;
+            }elseif($month2==12){
+                if($years_kabise2){
+                    $reminde=30-$day2;
+                    $reminde+=$day1;
+                }else{
+                    $reminde=29-$day2;
+                    $reminde+=$day1;
+                }
+            }
+            $month=$month2;
+            for($i=1;$i<=$dif;$i++){
+                $day=$this->day_dif(++$month,$years_kabise2);
+                $reminde+=$day;
+            }
         }
-        if ( $daysum <0 )
-        {
-            $iaddyear--;
-            $daysum = $daysum+365;
-            if (($iaddyear % 4 ) == 0 )
-                $daysum++;
+        elseif(($month1-$month2)==1 ){
+            if($month2<=6){
+                $reminde=31-$day2;
+                $reminde+=$day1;
+            }elseif($month2 >=7  && $month2 <=11 ){
+                $reminde=30-$day2;
+                $reminde+=$day1;
+            }elseif($month2==12){
+                if($years_kabise2){
+                    $reminde=30-$day2;
+                    $reminde+=$day1;
+                }else{
+                    $reminde=29-$day2;
+                    $reminde+=$day1;
+                }
+            }
+        }elseif(($month1-$month2)==0){
+        $reminde=$day1-$day2;
         }
-        $itodayyear = 1375+$iaddyear;
-        $itodaymonth=1;
-        while ( $daysum >= $PrevMonthDayHjr[$itodaymonth])
-        {
-            $itodaymonth++;
-            if( $itodaymonth ==12 )
-                break;
-        }
-        $daysum=$daysum - $PrevMonthDayHjr[$itodaymonth-1];
-        $itodayday = 1 + $daysum;
-        $isodate = sprintf("%04d/% 02d/% 02d",$itodayyear ,$itodaymonth, $itodayday);
-        return  $isodate;
     }
 
+    if($years1-$years2 >0){
+
+        $dif=0;
+
+            $dif2=12-$month2;
+            $dif1=$month1-1;
+            if($month2<=6){
+                $reminde=31-$day2;
+                $reminde+=$day1;
+
+            }elseif($month2>=7  && $month2<=11 ){
+                $reminde=30-$day2;
+                $reminde+=$day1;
+            }elseif($month2==12){
+                if($years_kabise2){
+                    $reminde=30-$day2;
+                    $reminde+=$day1;
+                }else{
+                    $reminde=29-$day2;
+                    $reminde+=$day1;
+                }
+            }
+                    $month=$month2;
+
+            for($i=1;$i<=$dif2;$i++){
+                ++$month;
+                $day=$this->day_dif($month,$years_kabise2);
+                $reminde+=$day;
+            }
+
+            for($i=1;$i<=$dif1;$i++){
+
+              $day=$this->day_dif($i,$years_kabise1);
+                $reminde+=$day;
+            }
+            if($years1-$years2 >1){
+                $years=$years1-$years2;
+                $years--;
+                for($i=1;$i<=$years;$i++){
+                    $year=++$years2;
+                    kabise($year);
+                    if($year){
+                                $reminde+=366;
+                    }else{
+                                $reminde+=365;
+                    }
+                }
+            }
+
+
+    }
+
+        return $reminde;
+}
+function day_dif($month,$kab){
+    switch($month){
+        case 1:
+            return 31;
+            break;
+        case 2:
+            return 31;
+            break;
+        case 3:
+            return 31;
+            break;
+        case 4:
+            return 31;
+            break;
+        case 5:
+            return 31;
+            break;
+        case 6:
+            return 31;
+            break;
+        case 7:
+            return 30;
+            break;
+        case 8:
+            return 30;
+            break;
+        case 9:
+            return 30;
+            break;
+        case 10:
+            return 30;
+            break;
+        case 11:
+            return 30;
+            break;
+        case 12:
+            if($kab){
+                return 30;}else{
+                return 29;
+                }
+            break;
+    }
+}
+ function kabise($year){
+     $years_kabise=false;
+     $kabise=$year%33;
+     if($kabise==1 || $kabise==5 || $kabise==9 || $kabise==13 || $kabise==17 || $kabise==22 || $kabise==26 || $kabise==30){
+         $years_kabise=true;
+     }
+     return $years_kabise;
+ }
+
+ function archiveporoject(){
+    $model = &$this->getModel('projects');
+        $result = $model->archiveproject();
+           if(!$result) {
+                echo $result;
+                exit();
+            }else{
+                echo $result;
+                exit();
+            }
+     
+ }
+ function deleteporoject(){
+    $model = &$this->getModel('projects');
+        $result = $model->deleteproject();
+           if(!$result) {
+                echo $result;
+                exit();
+            }else{
+                echo $result;
+                exit();
+            }
+     
+ }
+ function archivehost(){
+    $model = &$this->getModel('hosts');
+        $result = $model->archivehost();
+           if(!$result) {
+                echo $result;
+                exit();
+            }else{
+                echo $result;
+                exit();
+            }
+     
+ }
+ function deletehost(){
+    $model = &$this->getModel('hosts');
+        $result = $model->deletehost();
+           if(!$result) {
+                echo $result;
+                exit();
+            }else{
+                echo $result;
+                exit();
+            }
+     
+ }
+ function archivedomain(){
+    $model = &$this->getModel('domains');
+        $result = $model->archivedomain();
+           if(!$result) {
+                echo $result;
+                exit();
+            }else{
+                echo $result;
+                exit();
+            }
+     
+ }
+ function deletedomain(){
+    $model = &$this->getModel('domains');
+        $result = $model->deletedomain();
+           if(!$result) {
+                echo $result;
+                exit();
+            }else{
+                echo $result;
+                exit();
+            }
+     
+ }
 
 }

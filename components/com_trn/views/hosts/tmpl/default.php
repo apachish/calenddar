@@ -24,7 +24,37 @@ $canCheckin = $user->authorise('core.manage', 'com_trn');
 $canChange = $user->authorise('core.edit.state', 'com_trn');
 $canDelete = $user->authorise('core.delete', 'com_trn');
 ?>
+    <link type="text/css" href="<?php echo JURI::root()?>components/com_adduserfrontend/assest/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
 
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/calendar.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-ar.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-fa.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+
+jQuery('#filter_search1').datepicker({
+                onSelect: function(dateText, inst) {
+                    jQuery('#filter_search2').datepicker('option', 'minDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']));
+                var dat=jQuery('#filter_search1').val();
+                jQuery('#filter_search2').val(dat);}
+            });
+            jQuery('#filter_search2').datepicker({
+                onSelect: function(dateText, inst) {
+                    var dat=jQuery('#filter_search2').val();
+                jQuery('#filter_search1').val(dat);}
+                
+            });
+            jQuery('.icon-clear').click(function(){
+                jQuery('#filter_search2').val('');
+                jQuery('#filter_search1').val('');
+                jQuery('#filter_search').val('');
+                jQuery('#filter_search3').val('');
+            })
+})
+</script>
 <form action="<?php echo JRoute::_('index.php?option=com_trn&view=hosts'); ?>" method="post" name="adminForm" id="adminForm">
 
     <?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
@@ -32,48 +62,56 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
         <thead >
             <tr >
                 <?php if (isset($this->items[0]->state)): ?>
-        <th width="1%" class="nowrap center">
-            <?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
-        </th>
-    <?php endif; ?>
+                    <th width="1%" class="nowrap center">
+                        <?php if ($canDelete): ?>
+                            <button  class="btn btn-mini delete-button" type="button" title="حذف"><i class="icon-trash" ></i></button>
+                            <button  class="btn btn-mini archives-button" type="button" title="بایگانی"><i ><img src="images/archives.png"</i></button>
 
-    				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_HOSTS_CREATE_HOST', 'a.create_host', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_HOSTS_EXPIRATION_HOST', 'a.expiration_host', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_HOSTS_NAME_HOST', 'a.name_host', $listDirn, $listOrder); ?>
-				</th>
-
-
-    <?php if (isset($this->items[0]->id)): ?>
-        <th width="1%" class="nowrap center hidden-phone">
-            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-        </th>
-    <?php endif; ?>
-
-    				<?php if ($canEdit || $canDelete): ?>
-					<th class="center">
-				<?php echo JText::_('COM_TRN_HOSTS_ACTIONS'); ?>
-				</th>
-				<?php endif; ?>
-
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <td colspan="<?php echo isset($this->items[0]) ? count(get_object_vars($this->items[0])) : 10; ?>">
-            <?php echo $this->pagination->getListFooter(); ?>
-        </td>
-    </tr>
-    </tfoot>
-    <tbody>
-    <?php foreach ($this->items as $i => $item) : ?>
-        <?php $canEdit = $user->authorise('core.edit', 'com_trn'); ?>
-
-        				<?php if (!$canEdit && $user->authorise('core.edit.own', 'com_trn')): ?>
+                        <?php endif; ?>
+                    </th>
+                    <th class='nowrap center'>
+                        <?php echo JHtml::_('grid.sort',  'COM_TRN_HOSTS_NAME_HOST', 'a.name_host', $listDirn, $listOrder); ?>
+                    </th>
+    				<th class='nowrap center'>
+				        <?php echo JHtml::_('grid.sort',  'COM_TRN_HOSTS_CREATE_HOST', 'a.create_host', $listDirn, $listOrder); ?>
+				    </th>
+				    <th class='nowrap center'>
+				        <?php echo JHtml::_('grid.sort',  'COM_TRN_HOSTS_EXPIRATION_HOST', 'a.expiration_host', $listDirn, $listOrder); ?>
+				    </th>
+                    <th class='nowrap center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_TYPE_HOST', 'a.type_host', $listDirn, $listOrder); ?>
+                    </th>
+                     <th class='nowrap center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_FORM_LBL_PROJECT_NAME_CUSTOMER', 'a.user_id', $listDirn, $listOrder); ?>
+                    </th>
+                    <th class='nowrap center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_FORM_LBL_RIMAINDER', 'a.reminde', $listDirn, $listOrder); ?>
+                    </th>
+                    <!-- 
+                        <?php if (isset($this->items[0]->id)): ?>
+                        <th width="1%" class="nowrap center hidden-phone">
+                        <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+                        </th>
+                        <?php endif; ?> -->
+    				    <?php //if ($canEdit || $canDelete): ?>
+<!-- 					<th class="center">
+-->				    <?php //echo JText::_('COM_TRN_HOSTS_ACTIONS'); ?>
+                        <!--</th>-->				
+                        <?php //endif; ?>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="<?php echo isset($this->items[0]) ? count(get_object_vars($this->items[0])) : 10; ?>">
+                    <?php echo $this->pagination->getListFooter(); ?>
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <?php foreach ($this->items as $i => $item) : ?>
+                <?php $canEdit = $user->authorise('core.edit', 'com_trn'); ?>
+                <?php if (!$canEdit && $user->authorise('core.edit.own', 'com_trn')): ?>
 					<?php $canEdit = JFactory::getUser()->id == $item->created_by; ?>
 				<?php endif; ?>
 
@@ -81,7 +119,13 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
 
             <?php if (isset($this->items[0]->state)): ?>
                 <?php $class = ($canEdit || $canChange) ? 'active' : 'disabled'; ?>
-                <td class="center">
+                <?php if (isset($this->items[0]->id)): ?>
+                    <td class="nowrap  center hidden-phone">
+                    
+                        <input type="checkbox" name="id_list[]" value="<?php echo (int)$item->id; ?>">
+                    </td>
+                <?php endif; ?>
+        <!--         <td class="center">
                     <a class="btn btn-micro <?php echo $class; ?>"
                        href="<?php echo ($canEdit || $canChange) ? JRoute::_('index.php?option=com_trn&task=hostform.publish&id=' . $item->id . '&state=' . (($item->state + 1) % 2), false, 2) : '#'; ?>">
                         <?php if ($item->state == 1): ?>
@@ -90,45 +134,55 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
                             <i class="icon-unpublish"></i>
                         <?php endif; ?>
                     </a>
+                </td> -->
+                <td class="nowrap  center">
+                    <a href="<?php echo JRoute::_('index.php?option=com_trn&view=host&id='.(int) $item->id); ?>">
+                        <?php echo $item->name_host; ?>
+                    </a>    
                 </td>
-            <?php endif; ?>
+            	<td class="nowrap  center">
+<!-- 				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
 
-            				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'hosts.', $canCheckin); ?>
-				<?php endif; ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_trn&view=host&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->create_host); ?></a>
+				<?php endif; ?> -->
+				    <?php echo $this->escape($item->create_host); ?>
 				</td>
-				<td>
-
+				<td class="nowrap  center">
 					<?php echo $item->expiration_host; ?>
 				</td>
-				<td>
-
-					<?php echo $item->name_host; ?>
-				</td>
-
-
-            <?php if (isset($this->items[0]->id)): ?>
-                <td class="center hidden-phone">
-                    <?php echo (int)$item->id; ?>
+                <td class="nowrap  center">
+                    <?php echo $this->get_name_project($item->type_host); ?>
                 </td>
+                <td class="nowrap  center">
+                    <?php  $usered   = &JFactory::getUser($item->user_id); echo $usered->name; ?>
+                </td>
+                <td class="nowrap  center">
+                    <?php  if($item->reminde){echo $item->reminde.' '.JText::_('COM_TRN_FORM_PROJECT_RIMAIINDER');} ?>
+                </td>
+
+
+<!--             <?php //if (isset($this->items[0]->id)): ?>
+                <td class="center hidden-phone">
+                    <?php //echo (int)$item->id; ?>
+                </td>
+            <?php //endif; ?> -->
+
+            				<?php //if ($canEdit || $canDelete): ?>
+<!-- 					<td class="center">
+ -->						<?php //if ($canEdit): ?>
+<!-- 							<a href="<?php //echo JRoute::_('index.php?option=com_trn&task=hostform.edit&id=' . $item->id, false, 2); ?>" class="btn btn-mini" type="button"><i class="icon-edit" ></i></a>
+ -->						<?php //endif; ?>
+						<?php //if ($canDelete): ?>
+<!-- 							<button data-item-id="<?php //echo $item->id; ?>" class="btn btn-mini delete-button" type="button"><i class="icon-trash" ></i></button>
+ -->						<?php //endif; ?>
+<!-- 					</td>
+ -->				<?php //endif; ?>
             <?php endif; ?>
 
-            				<?php if ($canEdit || $canDelete): ?>
-					<td class="center">
-						<?php if ($canEdit): ?>
-							<a href="<?php echo JRoute::_('index.php?option=com_trn&task=hostform.edit&id=' . $item->id, false, 2); ?>" class="btn btn-mini" type="button"><i class="icon-edit" ></i></a>
-						<?php endif; ?>
-						<?php if ($canDelete): ?>
-							<button data-item-id="<?php echo $item->id; ?>" class="btn btn-mini delete-button" type="button"><i class="icon-trash" ></i></button>
-						<?php endif; ?>
-					</td>
-				<?php endif; ?>
-
         </tr>
+
     <?php endforeach; ?>
+
     </tbody>
     </table>
 
@@ -147,16 +201,80 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
 
 <script type="text/javascript">
 
-    jQuery(document).ready(function () {
-        jQuery('.delete-button').click(deleteItem);
-    });
+    // jQuery(document).ready(function () {
+    //     jQuery('.delete-button').click(deleteItem);
+    // });
 
-    function deleteItem() {
-        var item_id = jQuery(this).attr('data-item-id');
-        if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
-            window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&task=hostform.remove&id=', false, 2) ?>' + item_id;
-        }
-    }
+    // function deleteItem() {
+    //     var item_id = jQuery(this).attr('data-item-id');
+    //     if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
+    //         window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&task=hostform.remove&id=', false, 2) ?>' + item_id;
+    //     }
+    // }
+ jQuery(document).ready(function () {
+        
+        jQuery('.js-stools-btn-clear').click(function(){
+            jQuery('#filter_search').val('');
+            jQuery('#filter_search1').val('');
+            jQuery('#filter_search2').val('');
+            jQuery('#filter_search3').val('0');
+
+        });
+        jQuery('.archives-button').click(function(){
+            // var postData = $('form').serialize();alert(postData);
+             var checked = []
+             jQuery("input[name='id_list[]']:checked").each(function ()
+             {
+               checked.push(parseInt($(this).val()));
+              });
+             if (confirm("<?php echo JText::_('COM_TRN_ARCHIVE_MESSAGE'); ?>")) {
+                jQuery.ajax({
+                    url : "index.php?option=com_trn&task=archivehost",
+                    type: "POST",
+                    data : {formData:checked},
+                    success:function(data, textStatus, jqXHR)
+                    {
+                        console.log(data);
+                        window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&view=hosts') ?>';
+                        // if(data){
+                        //     alert('good');
+                        // }else{
+                        //      alert('bad');
+                        // }
+                    }
+                })
+            }    
+        })  
+        jQuery('.delete-button').click(function(){
+            // var postData = $('form').serialize();alert(postData);
+             var checked = []
+             jQuery("input[name='id_list[]']:checked").each(function ()
+             {
+               checked.push(parseInt($(this).val()));
+              });
+             if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
+                jQuery.ajax({
+                    url : "index.php?option=com_trn&task=deletehost",
+                    type: "POST",
+                    data : {formData:checked},
+                    success:function(data, textStatus, jqXHR)
+                    {
+                        console.log(data);
+                         window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&view=hosts') ?>';
+
+                        // if(data){
+                        //     alert('good');
+                        // }else{
+                        //      alert('bad');
+                        // }
+                    }
+                })
+            }    
+        })  
+        
+    })
+
 </script>
+
 
 

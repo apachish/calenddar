@@ -25,6 +25,11 @@ if (isset($data['view']->filterForm)) {
 
 // Load search tools
 JHtml::_('searchtools.form', $formSelector, $data['options']);
+$db =& JFactory::getDBO();
+        $user = JFactory::getUser();
+        $query_type="SELECT * FROM #__trn_type_project ";
+        $db->setQuery($query_type);
+       $variable=$db->loadObjectlist();
 ?>
 
 <div class="js-stools clearfix">
@@ -32,14 +37,36 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
         <div class="js-stools-container-bar">
 
             <label for="filter_search" class="element-invisible" aria-invalid="false"><?php echo JText::_('COM_TRN_SEARCH_FILTER_SUBMIT'); ?></label>
-
             <div class="btn-wrapper input-append">
                 <input type="text" name="filter[search]" id="filter_search" value="" class="js-stools-search-string"
                        placeholder="<?php echo JText::_('COM_TRN_SEARCH_FILTER_SUBMIT'); ?>">
+                
+                <input name="filter[search1]" id="filter_search1" value=""  readonly='readonly' 
+                class="js-stools-search-string" placeholder="از تاریخ" type="text">
+                
+                <input name="filter[search2]" id="filter_search2" value=""  readonly='readonly' 
+                class="js-stools-search-string" placeholder="تا تاریخ" type="text">
+                 <select name="filter[search3]" id="filter_search3"  >
+                    <option value='0'> نوع پروژه انتخاب کنید</option>
+                    <?php 
+                            foreach ($variable as $key => $value) {
+                                    echo '<option value="'.$value->id.'">'.$value->type_project.'</option>';
+                            }
+                        ?>
+                    </select>
+
                 <button type="submit" class="btn hasTooltip" title="" data-original-title="<?php echo JText::_('COM_TRN_SEARCH_FILTER_SUBMIT'); ?>">
                     <i class="icon-search"></i>
                 </button>
+<!--                             <div class="btn-wrapper">
+ -->                <button type="button" class="btn hasTooltip js-stools-btn-clear" title="" data-original-title="<?php echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>">
+                    <?php //echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>
+                                        <i class="icon-clear"><img src="/images/clear.png"></i>
+                </button>
+<!--             </div>
+ -->  
             </div>
+
             <?php if ($filters) : ?>
             <div class="btn-wrapper hidden-phone">
                 <button type="button" class="btn hasTooltip js-stools-btn-filter" title=""
@@ -48,12 +75,7 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
                 </button>
             </div>
             <?php endif; ?>
-            <div class="btn-wrapper">
-                <button type="button" class="btn hasTooltip js-stools-btn-clear" title="" data-original-title="<?php echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>">
-                    <?php echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>
-                </button>
-            </div>
-        </div>
+      </div>
     </div>
     <!-- Filters div -->
 

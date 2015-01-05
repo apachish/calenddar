@@ -24,9 +24,15 @@ $type_host=$this->type_host();
     <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-fa.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function(){
-	jQuery('#datepicker0').datepicker();
-		jQuery('#datepicker1').datepicker();
-	jQuery('#datepicker2').datepicker();
+	jQuery('#datepicker0').datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
+		jQuery('#datepicker1').datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
+	jQuery('#datepicker2').datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
   var myvar = <?php echo json_encode($variable); ?>;
     var next_p = 1;    
     var next_h= 1;
@@ -50,7 +56,9 @@ jQuery(document).ready(function(){
         jQuery(addto).after(newInput);
         jQuery(addRemove).after(removeButton);
         jQuery("#field_p" + next_p).attr('data-source',jQuery(addto).attr('data-source'));
-        jQuery("#count_p").val(next_p);          	jQuery('#datepicker_p'+ next_p).datepicker();
+        jQuery("#count_p").val(next_p);          	jQuery('#datepicker_p'+ next_p).datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
 
         
             jQuery('.remove-me_p').click(function(e){
@@ -80,7 +88,9 @@ jQuery(document).ready(function(){
         jQuery(addto).after(newInput);
         jQuery(addRemove).after(removeButton);
         jQuery("#field_h" + next_h).attr('data-source',jQuery(addto).attr('data-source'));
-        jQuery("#count_h").val(next_h);  jQuery('#datepicker_h'+ next_h).datepicker();
+        jQuery("#count_h").val(next_h);  jQuery('#datepicker_h'+ next_h).datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
         
             jQuery('.remove-me_h').click(function(e){
                 e.preventDefault();
@@ -103,7 +113,9 @@ jQuery(".add-more_domain").click(function(e){
         jQuery(addto).after(newInput);
         jQuery(addRemove).after(removeButton);
         jQuery("#field_s" + next_s).attr('data-source',jQuery(addto).attr('data-source'));
-        jQuery("#count_s").val(next_s);  jQuery('#datepicker_s'+ next_s).datepicker();
+        jQuery("#count_s").val(next_s);  jQuery('#datepicker_s'+ next_s).datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
         
             jQuery('.remove-me_s').click(function(e){
                 e.preventDefault();
@@ -503,9 +515,12 @@ if($_POST['row_prject']){
 		$date_p=$_POST['prof_p_date'.$i];
 		$type_p=$_POST['prof_p_type'.$i];
 		if($name_p && $date_p && $type_p){
+            echo $year=(int)substr($date_p,0,4);
+            echo $year_e=$year+1;
+            $date_E=str_replace($year, $year_e, $date_p);
 			$sql_p="INSERT INTO #__trn_project(state,checked_out,checked_out_time,created_by,create_project,
 							expiration_project,name_project,type_project,user_id) 
-					VALUES (1,".$uid .",".$uid .",'".date("Y-m-d H:i:s")."','".$date_p."','".$date_p."','".$name_p."','".$type_p."',".$user_id.")";
+					VALUES (1,".$uid .",'".date("Y-m-d H:i:s")."',".$uid .",'".$date_p."','".$date_E."','".$name_p."','".$type_p."',".$user_id.")";
 			$db->setQuery($sql_p);
 			$db->query();
 		}
@@ -520,9 +535,12 @@ if($_POST['row_host']){
 		 $date_h=$_POST['prof_h_date'.$i];
          $type_h=$_POST['prof_h_type'.$i];
 		if($name_h && $date_h  && $type_h){
+            echo $year=(int)substr($date_h,0,4);
+            echo $year_e=$year+1;
+            $date_E=str_replace($year, $year_e, $date_p);
 			$sql_h="INSERT INTO #__trn_host(state,checked_out,checked_out_time,created_by,create_host,
 							expiration_host,name_host,user_id,type_host) 
-					VALUES (1,".$uid .",'".date("Y-m-d H:i:s")."',".$uid .",'".$date_h."','".$date_h."','".$name_h."',".$user_id.",".$type_h.")";
+					VALUES (1,".$uid .",'".date("Y-m-d H:i:s")."',".$uid .",'".$date_h."','".$date_E."','".$name_h."',".$user_id.",".$type_h.")";
 			$db->setQuery($sql_h);
 			$db->query();
 		}
@@ -535,9 +553,12 @@ if($_POST['row_domain']){
 		echo $name_s=$_POST['prof_s_name'.$i];
 		echo $date_s=$_POST['prof_s_date'.$i];
 		if($name_s && $date_s ){
+                        echo $year=(int)substr($date_s,0,4);
+            echo $year_e=$year+1;
+            $date_E=str_replace($year, $year_e, $date_p);
 		echo	$sql_s="INSERT INTO #__trn_domain(state,checked_out,checked_out_time,created_by,create_domain,
 							expiration_domain,domain,user_id) 
-					VALUES (1,".$uid .",'".date("Y-m-d H:i:s")."',".$uid .",'".$date_s."','".$date_s."','".$name_s."',".$user_id.")";
+					VALUES (1,".$uid .",'".date("Y-m-d H:i:s")."',".$uid .",'".$date_s."','".$date_E."','".$name_s."',".$user_id.")";
 			$db->setQuery($sql_s);
 			$db->query();
 		}
@@ -923,7 +944,7 @@ echo '<tr>
                 <div class="input-append">
                     <div id="field"><span id="field_p1">
                     <input autocomplete="off" class="input"  name="prof_p_name1" type="text" placeholder="نام پروژه" data-items="8"/>
-                    <input autocomplete="off" class="input " id="datepicker0" name="prof_p_date1" type="text" placeholder="تاریخ پروژه" data-items="8"/>
+                    <input autocomplete="off" style="text-align: "right";" id="datepicker0" name="prof_p_date1" type="text" placeholder="تاریخ پروژه" data-items="8"/>
                     <select class="input"  name="prof_p_type1" >
                     <option value="0">نوع پروژه انتخاب کنید</option>';
                     foreach ($variable as $key => $value) {

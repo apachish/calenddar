@@ -34,22 +34,31 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
     <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-fa.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function(){
-    jQuery('#filter_search1').datepicker();
+
+jQuery('#filter_search1').datepicker({
+                onSelect: function(dateText, inst) {
+                    jQuery('#filter_search2').datepicker('option', 'minDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']));
+                var dat=jQuery('#filter_search1').val();
+                jQuery('#filter_search2').val(dat);}
+            });
+            jQuery('#filter_search2').datepicker({
+                onSelect: function(dateText, inst) {
+                    var dat=jQuery('#filter_search2').val();
+                jQuery('#filter_search1').val(dat);}
+                
+            });
+            jQuery('.icon-clear').click(function(){
+                jQuery('#filter_search2').val('');
+                jQuery('#filter_search1').val('');
+                jQuery('#filter_search').val('');
+                jQuery('#filter_search3').val('');
+            })
 })
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_trn&view=projects'); ?>" method="post" name="adminForm" id="adminForm">
-<table  width='100%'><tr>
-<td><input name="filter[search1]" id="filter_search1" value=""  readonly='readonly' class="js-stools-search-string" placeholder="Search" type="text">
-</td><td><select name="filter[search2]" id="filter_search2"  >
-<option value='0'> انتخاب کنید</option>
+
 <?php 
-$variable=$this->get_list_type_project();
-foreach ($variable as $key => $value) {
-    echo '<option value="'.$value->id.'">'.$value->type_project.'</option>';
-}
-?>
-</select></td><td>
-<?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?></td></tr></table>
+echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
     <div class="js-stools-container-filters hidden-phone clearfix" style="">
         <?php // Load the form filters ?>
         <?php if ($filters) : ?>
@@ -67,38 +76,39 @@ foreach ($variable as $key => $value) {
         <thead >
             <tr >
                 <?php if (isset($this->items[0]->state)): ?>
+                <?php if (isset($this->items[0]->id)): ?>
+                    <th width="1%" class="nowrap center hidden-phone">
+                        <?php if ($canDelete): ?>
+                            <button  class="btn btn-mini delete-button" type="button" title="حذف"><i class="icon-trash" ></i></button>
+                            <button  class="btn btn-mini archives-button" type="button" title="بایگانی"><i ><img src="images/archives.png"</i></button>
+
+                        <?php endif; ?>
+                    </th>
+                <?php endif; ?>
                     <th class='center'>
                     <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_NAME_PROJECT', 'a.name_project', $listDirn, $listOrder); ?>
                     </th>
-                <!--<th width="1%" class="nowrap center">
-                    <?php //echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
-                </th> -->
-
     				<th class='cetner'>
 				        <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_CREATE_PROJECT', 'a.create_project', $listDirn, $listOrder); ?>
 				    </th>
 				    <th class='center'>
 				    <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_EXPIRATION_PROJECT', 'a.expiration_project', $listDirn, $listOrder); ?>
 				    </th>
-
 				    <th class='center'>
 				    <?php echo JHtml::_('grid.sort',  'COM_TRN_PROJECTS_TYPE_PROJECT', 'a.type_project', $listDirn, $listOrder); ?>
 				    </th>
-
-
-<!--     <?php //if (isset($this->items[0]->id)): ?>
-        <th width="1%" class="nowrap center hidden-phone">
-            <?php //echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-        </th>
-    <?php //endif; ?> -->
-
-    				<?php if ($canEdit || $canDelete): ?>
-					   <th class="center">
-				        <?php echo JText::_('COM_TRN_PROJECTS_ACTIONS'); ?>
-				        </th>
-				    <?php endif; ?>
+                     <th class='center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_FORM_LBL_PROJECT_NAME_CUSTOMER', 'a.user_id', $listDirn, $listOrder); ?>
+                    </th>
+                    <th class='center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_FORM_LBL_RIMAINDER', 'a.reminde', $listDirn, $listOrder); ?>
+                    </th>
+    				<?php //if ($canEdit || $canDelete): ?>
+					   <!-- <th aligen="center"> -->
+				        <?php //echo JText::_('COM_TRN_PROJECTS_ACTIONS'); ?>
+				        <!-- </th> -->
+				    <?php //endif; ?>
                 <?php endif; ?>    
-
     </tr>
     </thead>
     <tfoot>
@@ -120,22 +130,17 @@ foreach ($variable as $key => $value) {
 
             <?php if (isset($this->items[0]->state)): ?>
                 <?php $class = ($canEdit || $canChange) ? 'active' : 'disabled'; ?>
+                <?php if (isset($this->items[0]->id)): ?>
+                <td class="center hidden-phone">
+                    
+                    <input type="checkbox" name="id_list[]" value="<?php echo (int)$item->id; ?>">
+                </td>
+            <?php endif; ?>
                 <td class="center">
                     <a href="<?php echo JRoute::_('index.php?option=com_trn&view=project&id='.(int) $item->id); ?>">
                     <?php echo $item->name_project; ?>
                     </a>
                 </td>
-<!--                 <td class="center">
-                    <a class="btn btn-micro <?php echo $class; ?>"
-                       href="<?php echo ($canEdit || $canChange) ? JRoute::_('index.php?option=com_trn&task=projectform.publish&id=' . $item->id . '&state=' . (($item->state + 1) % 2), false, 2) : '#'; ?>">
-                        <?php if ($item->state == 1): ?>
-                            <i class="icon-publish"></i>
-                        <?php else: ?>
-                            <i class="icon-unpublish"></i>
-                        <?php endif; ?>
-                    </a>
-                </td> -->
-
             	<td class="center">
                     <!--<?php //if (isset($item->checked_out) && $item->checked_out) : ?>
 					<?php //echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'projects.', $canCheckin); ?>
@@ -148,24 +153,24 @@ foreach ($variable as $key => $value) {
 				<td class="center">
 					<?php echo $this->get_name_project($item->type_project); ?>
 				</td>
-<!-- 
-
-            <?php if (isset($this->items[0]->id)): ?>
-                <td class="center hidden-phone">
-                    <?php echo (int)$item->id; ?>
+                <td class="center">
+                    <?php  $usered   = &JFactory::getUser($item->user_id); echo $usered->name; ?>
                 </td>
-            <?php endif; ?> -->
+                <td class="center">
+                    <?php  if($item->reminde){echo $item->reminde.' '.JText::_('COM_TRN_FORM_PROJECT_RIMAIINDER');} ?>
+                </td>
+            
 
-            				<?php if ($canEdit || $canDelete): ?>
+            			<!-- 	<?php if ($canEdit || $canDelete): ?>
 					<td class="center">
-						<?php if ($canEdit): ?>
+						<?php //if ($canEdit): ?>
 							<a href="<?php echo JRoute::_('index.php?option=com_trn&task=projectform.edit&id=' . $item->id, false, 2); ?>" class="btn btn-mini" type="button"><i class="icon-edit" ></i></a>
-						<?php endif; ?>
-						<?php if ($canDelete): ?>
-							<button data-item-id="<?php echo $item->id; ?>" class="btn btn-mini delete-button" type="button"><i class="icon-trash" ></i></button>
+						<?php //endif; ?>
+						<?php if ($canEdit)://$canDelete): ?>
+							<button data-item-id="<?php echo $item->id; ?>" class="btn btn-mini delete-button" type="button"><i class="icon-edit" ></i></button>
 						<?php endif; ?>
 					</td>
-				<?php endif; ?>
+				<?php endif; ?> -->
             <?php endif; ?>
 
         </tr>
@@ -188,16 +193,95 @@ foreach ($variable as $key => $value) {
 
 <script type="text/javascript">
 
-    jQuery(document).ready(function () {
-        jQuery('.delete-button').click(deleteItem);
-    });
+    // jQuery(document).ready(function () {
+    //     jQuery('.delete-button').live('click',function(){
+    //                 var item_id = jQuery(this).attr('data-item-id');alert(item_id);
+    //     jQuery.ajax(
+    //             {
+    //                 url : "index.php?option=com_trn&view=project&id="+item_id,
+    //                 type: "POST",
+    //                 success:function(data, textStatus, jqXHR)
+    //                 {
+    //                     console.log(data);
+    //                 }
+    //             })
+    //             deleteItem; 
+    //     })           
+    //     jQuery('.delete-button').live('click',deleteItem);
 
-    function deleteItem() {
-        var item_id = jQuery(this).attr('data-item-id');
-        if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
-            window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&task=projectform.remove&id=', false, 2) ?>' + item_id;
-        }
-    }
+    // });
+
+    // function deleteItem() {
+    //     var item_id = jQuery(this).attr('data-item-id');//alert(item_id);
+    //     //if (confirm("<?php echo JText::_('COM_TRN_EDIT_MESSAGE'); ?>")) {
+    //                    // alert('<?php echo JRoute::_('index.php?option=com_trn&task=projectform.remove&id=',true, 2) ?>' + item_id);
+
+    //         window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&task=projectform.remove&id=',true, 2) ?>' + item_id;
+    //     //}
+    // }
+    jQuery(document).ready(function () {
+        
+        jQuery('.js-stools-btn-clear').click(function(){
+            jQuery('#filter_search').val('');
+            jQuery('#filter_search1').val('');
+            jQuery('#filter_search2').val('');
+            jQuery('#filter_search3').val('0');
+
+        });
+        jQuery('.archives-button').click(function(){
+            // var postData = $('form').serialize();alert(postData);
+             var checked = []
+             jQuery("input[name='id_list[]']:checked").each(function ()
+             {
+               checked.push(parseInt($(this).val()));
+              });
+             if (confirm("<?php echo JText::_('COM_TRN_ARCHIVE_MESSAGE'); ?>")) {
+                jQuery.ajax({
+                    url : "index.php?option=com_trn&task=archiveporoject",
+                    type: "POST",
+                    data : {formData:checked},
+                    success:function(data, textStatus, jqXHR)
+                    {
+                        console.log(data);
+                        window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&view=projects') ?>';
+                        // if(data){
+                        //     alert('good');
+                        // }else{
+                        //      alert('bad');
+                        // }
+                    }
+                })
+            }    
+        })  
+        jQuery('.delete-button').click(function(){
+            // var postData = $('form').serialize();alert(postData);
+             var checked = []
+             jQuery("input[name='id_list[]']:checked").each(function ()
+             {
+               checked.push(parseInt($(this).val()));
+              });
+             if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
+                jQuery.ajax({
+                    url : "index.php?option=com_trn&task=deleteporoject",
+                    type: "POST",
+                    data : {formData:checked},
+                    success:function(data, textStatus, jqXHR)
+                    {
+                        console.log(data);
+                         window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&view=projects') ?>';
+
+                        // if(data){
+                        //     alert('good');
+                        // }else{
+                        //      alert('bad');
+                        // }
+                    }
+                })
+            }    
+        })  
+        
+    })
+
 </script>
 
 

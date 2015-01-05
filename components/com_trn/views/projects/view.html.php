@@ -92,11 +92,7 @@ class TrnViewProjects extends JViewLegacy {
         return $type->type_project;
     }
     function get_list_type_project(){
-        $db =& JFactory::getDBO();
-        $user = JFactory::getUser();
-       echo $query_type="SELECT * FROM #__trn_type_project ";
-        $db->setQuery($query_type);
-        $type=$db->loadObjectlist();
+
         
         return $type;
     }

@@ -37,7 +37,8 @@ class TrnModelProjects extends JModelList
                 'name_project', 'a.name_project',
                 'extera_filde', 'a.extera_filde',
                 'type_project', 'a.type_project',
-
+                'user_id', 'a.user_id',
+                'reminde', 'a.reminde',
             );
         }
         parent::__construct($config);
@@ -175,42 +176,80 @@ class TrnModelProjects extends JModelList
 $query->where('a.state = 1');
 
         // Filter by search in title
-        $search = $this->getState('filter.search');
-        if (!empty($search))
+        $name_project = $this->getState('filter.search');
+        $create_project = $this->getState('filter.search1');
+        $expiration_project = $this->getState('filter.search2');
+        $type_project = $this->getState('filter.search3');
+        if(!empty($type_project) && ( !empty($create_project) && !empty($expiration_project)) && !empty($name_project) ){
+                $type_project = $db->Quote($db->escape($type_project, true));
+                $create_project = $db->Quote( $db->escape($create_project, true));
+                $expiration_project = $db->Quote( $db->escape($expiration_project, true) );
+                $name_project = $db->Quote('%' . $db->escape($name_project, true) . '%');
+                $query->where('( a.create_project >='.$create_project.' ) AND ( a.expiration_project <='.$expiration_project.' )
+                    AND ( a.name_project LIKE '.$name_project.' ) AND ( a.type_project='. $type_project .' )');
+        }elseif(!empty($name_project) && ( !empty($create_project) && !empty($expiration_project)) ){
+                $create_project = $db->Quote( $db->escape($create_project, true));
+                $expiration_project = $db->Quote( $db->escape($expiration_project, true) );
+                $name_project = $db->Quote('%' . $db->escape($name_project, true) . '%');
+                $query->where('( a.create_project >='.$create_project.' ) AND ( a.expiration_project <='.$expiration_project.' )
+                    AND ( a.name_project LIKE '.$name_project.' )');
+        }elseif(!empty($type_project) && ( !empty($create_project) && !empty($expiration_project)) ){
+                $type_project = $db->Quote($db->escape($type_project, true));
+                $create_project = $db->Quote( $db->escape($create_project, true));
+                $expiration_project = $db->Quote( $db->escape($expiration_project, true) );
+                $query->where('( a.create_project >='.$create_project.' ) AND ( a.expiration_project <='.$expiration_project.' ) 
+                    AND ( a.type_project='. $type_project .' )');
+        }elseif(!empty($type_project) && !empty($name_project)){
+            $type_project = $db->Quote($db->escape($type_project, true));
+            $name_project = $db->Quote('%' . $db->escape($name_project, true) . '%');
+                $query->where('( a.type_project='. $type_project .' ) AND ( a.name_project LIKE '.$name_project.' )');
+        }
+        elseif (!empty($name_project))
         {
-            if (stripos($search, 'id:') === 0)
+            if (stripos($name_project, 'id:') === 0)
             {
-                $query->where('a.id = ' . (int) substr($search, 3));
+                $query->where('a.id = ' . (int) substr($name_project, 3));
             }
             else
             {
-                $search = $db->Quote('%' . $db->escape($search, true) . '%');
-                $query->where('( a.name_project LIKE '.$search.' )');
+                $name_project = $db->Quote('%' . $db->escape($name_project, true) . '%');
+                $query->where('( a.name_project LIKE '.$name_project.' )');
             }
-        }
-        $search = $this->getState('filter.search1');
-        if (!empty($search))
+        }elseif (!empty($create_project) && !empty($expiration_project))
         {
-            if (stripos($search, 'id:') === 0)
+            if (stripos($search1, 'id:') === 0)
             {
-                $query->where('a.id = ' . (int) substr($search, 3));
+                $query->where('a.id = ' . (int) substr($create_project, 3));
             }
             else
             {
-                $search = $db->Quote('%' . $db->escape($search, true) . '%');
-                $query->where('( a.expiration_project LIKE '.$search.' )');
+                $create_project = $db->Quote( $db->escape($create_project, true));
+                $expiration_project = $db->Quote( $db->escape($expiration_project, true) );
+                $query->where('( a.create_project >='.$create_project.' ) AND ( a.expiration_project <='.$expiration_project.' )');
+            }
+        }elseif (!empty($type_project))
+        {
+            if (stripos($type_project, 'id:') === 0)
+            {
+                $query->where('a.id = ' . (int) substr($type_project, 3));
+            }
+            else
+            {
+                 $type_project = $db->Quote($db->escape($type_project, true));
+                $query->where('( a.type_project='. $type_project .' )');
             }
         }
-        
-
         // Add the list ordering clause.
-        $orderCol = $this->state->get('list.ordering');
+         $orderCol = $this->state->get('list.ordering');
         $orderDirn = $this->state->get('list.direction');
         if ($orderCol && $orderDirn)
         {
             $query->order($db->escape($orderCol . ' ' . $orderDirn));
+        }else{
+            $orderCol='a.reminde';
+            $orderDirn='asc';
+            $query->order($db->escape($orderCol . ' ' . $orderDirn));
         }
-
         return $query;
     }
 
@@ -282,5 +321,35 @@ $query->where('a.state = 1');
         else
             $list=false;
         return $list;
+    }
+    function archiveproject(){
+        $db = JFactory::getDBO();
+        $variable = $_POST['formData'];
+        foreach ($variable as $key => $value) {
+                   $query_group="UPDATE #__trn_project SET state=2 WHERE id=".$value;
+                  $db->setQuery($query_group);
+                  $db->query();
+                  $rows = $db->getNumRows();
+        }
+        if($rows){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function deleteproject(){
+        $db = JFactory::getDBO();
+        $variable = $_POST['formData'];
+        foreach ($variable as $key => $value) {
+                   $query_group="UPDATE #__trn_project SET state=-2 WHERE id=".$value;
+                  $db->setQuery($query_group);
+                  $db->query();
+                  $rows = $db->getNumRows();
+        }
+        if($rows){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

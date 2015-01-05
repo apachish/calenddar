@@ -99,5 +99,13 @@ class TrnViewProject extends JViewLegacy {
             $this->document->setMetadata('robots', $this->params->get('robots'));
         }
     }
-
+    function get_name_project($id){
+        $db =& JFactory::getDBO();
+        $user = JFactory::getUser();
+        $query_type="SELECT * FROM #__trn_type_project  where id=".$id;
+        $db->setQuery($query_type);
+        $type=$db->loadObject();
+        
+        return $type->type_project;
+    }
 }

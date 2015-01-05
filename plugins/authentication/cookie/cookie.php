@@ -65,7 +65,6 @@ class PlgAuthenticationCookie extends JPlugin
 		{
 			return;
 		}
-
 		$cookieArray	= explode('.', $cookieValue);
 
 		// Check for valid cookie value

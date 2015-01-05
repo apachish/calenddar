@@ -36,6 +36,7 @@ class TrnModelDomains extends JModelList
                 'expiration_domain', 'a.expiration_domain',
                 'domain', 'a.domain',
                 'extera_filde', 'a.extera_filde',
+                'reminde', 'a.reminde',
 
             );
         }
@@ -176,7 +177,15 @@ $query->where('a.state = 1');
 
         // Filter by search in title
         $search = $this->getState('filter.search');
-        if (!empty($search))
+        $create_domain = $this->getState('filter.search1');
+        $expiration_domain = $this->getState('filter.search2');
+        if(!empty($search) && ( !empty($create_domain) && !empty($expiration_domain)) ){
+                $create_domain = $db->Quote( $db->escape($create_domain, true));
+                $expiration_domain = $db->Quote( $db->escape($expiration_domain, true) );
+                $search = $db->Quote('%' . $db->escape($search, true) . '%');
+                $query->where('( a.create_domain >='.$create_domain.' ) AND ( a.expiration_domain <='.$expiration_domain.' )
+                    AND ( a.domain LIKE '.$search.' )');
+        }elseif (!empty($search))
         {
             if (stripos($search, 'id:') === 0)
             {
@@ -187,6 +196,14 @@ $query->where('a.state = 1');
                 $search = $db->Quote('%' . $db->escape($search, true) . '%');
                 $query->where('( a.domain LIKE '.$search.' )');
             }
+        }elseif(!empty($search) && ( !empty($create_domain) && !empty($expiration_domain)) ){
+                $create_domain = $db->Quote( $db->escape($create_domain, true));
+                $expiration_domain = $db->Quote( $db->escape($expiration_domain, true) );
+                $query->where('( a.create_domain >='.$create_domain.' ) AND ( a.expiration_domain <='.$expiration_domain.' )');
+        }else{
+            $orderCol='a.reminde';
+            $orderDirn='asc';
+            $query->order($db->escape($orderCol . ' ' . $orderDirn));
         }
 
         
@@ -244,6 +261,36 @@ $query->where('a.state = 1');
     private function isValidDate($date)
     {
         return preg_match("/^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/", $date) && date_create($date);
+    }
+       function archivedomain(){
+        $db = JFactory::getDBO();
+        $variable = $_POST['formData'];
+        foreach ($variable as $key => $value) {
+                   $query_group="UPDATE #__trn_domain SET state=2 WHERE id=".$value;
+                  $db->setQuery($query_group);
+                  $db->query();
+                  $rows = $db->getNumRows();
+        }
+        if($rows){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function deletedomain(){
+        $db = JFactory::getDBO();
+        $variable = $_POST['formData'];
+        foreach ($variable as $key => $value) {
+                   $query_group="UPDATE #__trn_domain SET state=-2 WHERE id=".$value;
+                  $db->setQuery($query_group);
+                  $db->query();
+                  $rows = $db->getNumRows();
+        }
+        if($rows){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

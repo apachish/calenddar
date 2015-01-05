@@ -36,7 +36,8 @@ class TrnModelHosts extends JModelList
                 'expiration_host', 'a.expiration_host',
                 'name_host', 'a.name_host',
                 'extera_filde', 'a.extera_filde',
-
+                'type_host', 'a.type_host',
+                'reminde', 'a.reminde',
             );
         }
         parent::__construct($config);
@@ -176,7 +177,15 @@ $query->where('a.state = 1');
 
         // Filter by search in title
         $search = $this->getState('filter.search');
-        if (!empty($search))
+                $create_host = $this->getState('filter.search1');
+        $expiration_host = $this->getState('filter.search2');
+        if(!empty($search) && ( !empty($create_host) && !empty($expiration_host)) ){
+                $create_host = $db->Quote( $db->escape($create_host, true));
+                $expiration_host = $db->Quote( $db->escape($expiration_host, true) );
+                $search = $db->Quote('%' . $db->escape($search, true) . '%');
+                $query->where('( a.create_host >='.$create_host.' ) AND ( a.expiration_host <='.$expiration_host.' )
+                    AND ( a.name_project LIKE '.$search.' )');
+        }elseif (!empty($search))
         {
             if (stripos($search, 'id:') === 0)
             {
@@ -187,6 +196,10 @@ $query->where('a.state = 1');
                 $search = $db->Quote('%' . $db->escape($search, true) . '%');
                 $query->where('( a.name_host LIKE '.$search.' )');
             }
+        }elseif( !empty($create_host) && !empty($expiration_host) ){
+                $create_host = $db->Quote( $db->escape($create_host, true));
+                $expiration_host = $db->Quote( $db->escape($expiration_host, true) );
+                $query->where('( a.create_host >='.$create_host.' ) AND ( a.expiration_host <='.$expiration_host.' )');
         }
 
         
@@ -245,5 +258,34 @@ $query->where('a.state = 1');
     {
         return preg_match("/^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/", $date) && date_create($date);
     }
-
+       function archivehost(){
+        $db = JFactory::getDBO();
+        $variable = $_POST['formData'];
+        foreach ($variable as $key => $value) {
+                   $query_group="UPDATE #__trn_host SET state=2 WHERE id=".$value;
+                  $db->setQuery($query_group);
+                  $db->query();
+                  $rows = $db->getNumRows();
+        }
+        if($rows){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function deletehost(){
+        $db = JFactory::getDBO();
+        $variable = $_POST['formData'];
+        foreach ($variable as $key => $value) {
+                   $query_group="UPDATE #__trn_host SET state=-2 WHERE id=".$value;
+                  $db->setQuery($query_group);
+                  $db->query();
+                  $rows = $db->getNumRows();
+        }
+        if($rows){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -36,10 +36,21 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
             <div class="btn-wrapper input-append">
                 <input type="text" name="filter[search]" id="filter_search" value="" class="js-stools-search-string"
                        placeholder="<?php echo JText::_('COM_TRN_SEARCH_FILTER_SUBMIT'); ?>">
+                                       <input name="filter[search1]" id="filter_search1" value=""  readonly='readonly' 
+                class="js-stools-search-string" placeholder="از تاریخ" type="text">
+                
+                <input name="filter[search2]" id="filter_search2" value=""  readonly='readonly' 
+                class="js-stools-search-string" placeholder="تا تاریخ" type="text">
                 <button type="submit" class="btn hasTooltip" title="" data-original-title="<?php echo JText::_('COM_TRN_SEARCH_FILTER_SUBMIT'); ?>">
                     <i class="icon-search"></i>
                 </button>
-            </div>
+<!--                 <div class="btn-wrapper">
+ -->                <button type="button" class="btn hasTooltip js-stools-btn-clear" title="" data-original-title="<?php echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>">
+                     <i class="icon-clear"><img src="/images/clear.png"></i>
+                    <?php //echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>
+                </button>
+<!--             </div>
+ -->            </div>
             <?php if ($filters) : ?>
             <div class="btn-wrapper hidden-phone">
                 <button type="button" class="btn hasTooltip js-stools-btn-filter" title=""
@@ -48,11 +59,7 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
                 </button>
             </div>
             <?php endif; ?>
-            <div class="btn-wrapper">
-                <button type="button" class="btn hasTooltip js-stools-btn-clear" title="" data-original-title="<?php echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>">
-                    <?php echo JText::_('COM_TRN_SEARCH_FILTER_CLEAR'); ?>
-                </button>
-            </div>
+
         </div>
     </div>
     <!-- Filters div -->

@@ -24,7 +24,36 @@ $canCheckin = $user->authorise('core.manage', 'com_trn');
 $canChange = $user->authorise('core.edit.state', 'com_trn');
 $canDelete = $user->authorise('core.delete', 'com_trn');
 ?>
+    <link type="text/css" href="<?php echo JURI::root()?>components/com_adduserfrontend/assest/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/calendar.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-ar.js"></script>
+    <script type="text/javascript" src="<?php echo JURI::root()?>components/com_adduserfrontend/assest/scripts/jquery.ui.datepicker-cc-fa.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
 
+jQuery('#filter_search1').datepicker({
+                onSelect: function(dateText, inst) {
+                    jQuery('#filter_search2').datepicker('option', 'minDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']));
+                var dat=jQuery('#filter_search1').val();
+                jQuery('#filter_search2').val(dat);}
+            });
+            jQuery('#filter_search2').datepicker({
+                onSelect: function(dateText, inst) {
+                    var dat=jQuery('#filter_search2').val();
+                jQuery('#filter_search1').val(dat);}
+                
+            });
+            jQuery('.icon-clear').click(function(){
+                jQuery('#filter_search2').val('');
+                jQuery('#filter_search1').val('');
+                jQuery('#filter_search').val('');
+                jQuery('#filter_search3').val('');
+            })
+})
+</script>
 <form action="<?php echo JRoute::_('index.php?option=com_trn&view=domains'); ?>" method="post" name="adminForm" id="adminForm">
 
     <?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
@@ -35,30 +64,43 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
         <!--<th width="1%" class="nowrap center">
             <?php //echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
         </th>-->
-    <?php endif; ?>
+                        <?php if (isset($this->items[0]->id)): ?>
+                    <th width="1%" class="nowrap center hidden-phone">
+                        <?php if ($canDelete): ?>
+                            <button  class="btn btn-mini delete-button" type="button" title="حذف"><i class="icon-trash" ></i></button>
+                            <button  class="btn btn-mini archives-button" type="button" title="بایگانی"><i ><img src="images/archives.png"</i></button>
 
-    				<th class='left'>
+                        <?php endif; ?>
+                    </th>
+                <?php endif; ?>
+                <th class='nowrap center'>
+                <?php echo JHtml::_('grid.sort',  'COM_TRN_DOMAINS_DOMAIN', 'a.domain', $listDirn, $listOrder); ?>
+                </th>
+    				<th class='nowrap center'>
 				<?php echo JHtml::_('grid.sort',  'COM_TRN_DOMAINS_CREATE_DOMAIN', 'a.create_domain', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
+				<th class='nowrap center'>
 				<?php echo JHtml::_('grid.sort',  'COM_TRN_DOMAINS_EXPIRATION_DOMAIN', 'a.expiration_domain', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TRN_DOMAINS_DOMAIN', 'a.domain', $listDirn, $listOrder); ?>
-				</th>
+                     <th class='nowrap center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_FORM_LBL_PROJECT_NAME_CUSTOMER', 'a.user_id', $listDirn, $listOrder); ?>
+                    </th>
+                    <th class='nowrap center'>
+                    <?php echo JHtml::_('grid.sort',  'COM_TRN_FORM_LBL_RIMAINDER', 'a.reminde', $listDirn, $listOrder); ?>
+                    </th>
 
+    <?php //if (isset($this->items[0]->id)): ?>
+<!--         <th width="1%" class="nowrap center hidden-phone">
+ -->            <?php //echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+<!--         </th>
+ -->    <?php //endif; ?>
 
-    <?php if (isset($this->items[0]->id)): ?>
-        <th width="1%" class="nowrap center hidden-phone">
-            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-        </th>
+    				<?php //if ($canEdit || $canDelete): ?>
+<!-- 					<th class="center">
+ -->				<?php //echo JText::_('COM_TRN_DOMAINS_ACTIONS'); ?>
+<!-- 				</th>
+ -->				<?php //endif; ?>
     <?php endif; ?>
-
-    				<?php if ($canEdit || $canDelete): ?>
-					<th class="center">
-				<?php echo JText::_('COM_TRN_DOMAINS_ACTIONS'); ?>
-				</th>
-				<?php endif; ?>
 
     </tr>
     </thead>
@@ -78,7 +120,12 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
 				<?php endif; ?>
 
         <tr class="row<?php echo $i % 2; ?>">
-
+                <?php if (isset($this->items[0]->id)): ?>
+                <td class="nowrap center hidden-phone">
+                    
+                    <input type="checkbox" name="id_list[]" value="<?php echo (int)$item->id; ?>">
+                </td>
+            <?php endif; ?>
             <?php /*if (isset($this->items[0]->state)): ?>
                 <?php $class = ($canEdit || $canChange) ? 'active' : 'disabled'; ?>
                 <td class="center">
@@ -92,40 +139,44 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
                     </a>
                 </td>
             <?php endif; */?>
-
-            				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
+                <td class="nowrap center">
+                <a href="<?php echo JRoute::_('index.php?option=com_trn&view=domain&id='.(int) $item->id); ?>">
+                    <?php echo $item->domain; ?>
+                </a>    
+                </td>
+            	<td class="nowrap center">
+<!-- 				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'domains.', $canCheckin); ?>
-				<?php endif; ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_trn&view=domain&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->create_domain); ?></a>
+				<?php endif; ?> -->
+				<?php echo $this->escape($item->create_domain); ?>
 				</td>
-				<td>
-
+				<td class="nowrap center">
 					<?php echo $item->expiration_domain; ?>
 				</td>
-				<td>
-
-					<?php echo $item->domain; ?>
-				</td>
-
-
-            <?php if (isset($this->items[0]->id)): ?>
-                <td class="center hidden-phone">
-                    <?php echo (int)$item->id; ?>
+                <td class="nowrap center">
+                    <?php  $usered   = &JFactory::getUser($item->user_id); echo $usered->name; ?>
                 </td>
-            <?php endif; ?>
+                <td class="nowrap center">
+                    <?php  if($item->reminde){echo $item->reminde.' '.JText::_('COM_TRN_FORM_PROJECT_RIMAIINDER');} ?>
+                </td>
 
-            				<?php if ($canEdit || $canDelete): ?>
-					<td class="center">
-						<?php if ($canEdit): ?>
-							<a href="<?php echo JRoute::_('index.php?option=com_trn&task=domainform.edit&id=' . $item->id, false, 2); ?>" class="btn btn-mini" type="button"><i class="icon-edit" ></i></a>
-						<?php endif; ?>
-						<?php if ($canDelete): ?>
-							<button data-item-id="<?php echo $item->id; ?>" class="btn btn-mini delete-button" type="button"><i class="icon-trash" ></i></button>
-						<?php endif; ?>
-					</td>
-				<?php endif; ?>
+
+            <?php //if (isset($this->items[0]->id)): ?>
+<!--                 <td class="center hidden-phone">
+ -->                    <?php //echo (int)$item->id; ?>
+<!--                 </td>
+ -->            <?php //endif; ?>
+
+            				<?php //if ($canEdit || $canDelete): ?>
+<!-- 					<td class="center">
+ -->						<?php //if ($canEdit): ?>
+<!-- 							<a href="<?php //echo JRoute::_('index.php?option=com_trn&task=domainform.edit&id=' . $item->id, false, 2); ?>" class="btn btn-mini" type="button"><i class="icon-edit" ></i></a>
+ -->						<?php //endif; ?>
+						<?php //if ($canDelete): ?>
+<!-- 							<button data-item-id="<?php //echo $item->id; ?>" class="btn btn-mini delete-button" type="button"><i class="icon-trash" ></i></button>
+ -->						<?php //endif; ?>
+			<!-- 		</td> -->
+				<?php //endif; ?>
 
         </tr>
     <?php endforeach; ?>
@@ -147,16 +198,80 @@ $canDelete = $user->authorise('core.delete', 'com_trn');
 
 <script type="text/javascript">
 
-    jQuery(document).ready(function () {
-        jQuery('.delete-button').click(deleteItem);
-    });
+    // jQuery(document).ready(function () {
+    //     jQuery('.delete-button').click(deleteItem);
+    // });
 
-    function deleteItem() {
-        var item_id = jQuery(this).attr('data-item-id');
-        if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
-            window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&task=domainform.remove&id=', false, 2) ?>' + item_id;
-        }
-    }
+    // function deleteItem() {
+    //     var item_id = jQuery(this).attr('data-item-id');
+    //     if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
+    //         window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&task=domainform.remove&id=', false, 2) ?>' + item_id;
+    //     }
+    // }
+ jQuery(document).ready(function () {
+        
+        jQuery('.js-stools-btn-clear').click(function(){
+            jQuery('#filter_search').val('');
+            jQuery('#filter_search1').val('');
+            jQuery('#filter_search2').val('');
+            jQuery('#filter_search3').val('0');
+
+        });
+        jQuery('.archives-button').click(function(){
+            // var postData = $('form').serialize();alert(postData);
+             var checked = []
+             jQuery("input[name='id_list[]']:checked").each(function ()
+             {
+               checked.push(parseInt($(this).val()));
+              });
+             if (confirm("<?php echo JText::_('COM_TRN_ARCHIVE_MESSAGE'); ?>")) {
+                jQuery.ajax({
+                    url : "index.php?option=com_trn&task=archivedomain",
+                    type: "POST",
+                    data : {formData:checked},
+                    success:function(data, textStatus, jqXHR)
+                    {
+                        console.log(data);
+                        window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&view=domains') ?>';
+                        // if(data){
+                        //     alert('good');
+                        // }else{
+                        //      alert('bad');
+                        // }
+                    }
+                })
+            }    
+        })  
+        jQuery('.delete-button').click(function(){
+            // var postData = $('form').serialize();alert(postData);
+             var checked = []
+             jQuery("input[name='id_list[]']:checked").each(function ()
+             {
+               checked.push(parseInt($(this).val()));
+              });
+             if (confirm("<?php echo JText::_('COM_TRN_DELETE_MESSAGE'); ?>")) {
+                jQuery.ajax({
+                    url : "index.php?option=com_trn&task=deletedomain",
+                    type: "POST",
+                    data : {formData:checked},
+                    success:function(data, textStatus, jqXHR)
+                    {
+                        console.log(data);
+                         window.location.href = '<?php echo JRoute::_('index.php?option=com_trn&view=domains') ?>';
+
+                        // if(data){
+                        //     alert('good');
+                        // }else{
+                        //      alert('bad');
+                        // }
+                    }
+                })
+            }    
+        })  
+        
+    })
+
 </script>
+
 
 

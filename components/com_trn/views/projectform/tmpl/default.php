@@ -74,7 +74,7 @@ $doc->addScript(JUri::base() . '/components/com_trn/assets/js/form.js');
 	</div>
 	<input type="hidden" name="jform[extera_filde]" value="<?php echo $this->item->extera_filde; ?>" />
 
-	<div class="control-group">
+	<!-- <div class="control-group">
 		<div class="control-label"><?php echo $this->form->getLabel('type_project'); ?></div>
 		<div class="controls"><?php echo $this->form->getInput('type_project'); ?></div>
 	</div>				<div class="fltlft" <?php if (!JFactory::getUser()->authorise('core.admin','trn')): ?> style="display:none;" <?php endif; ?> >
@@ -98,7 +98,7 @@ $doc->addScript(JUri::base() . '/components/com_trn/assets/js/form.js');
                        document.getElementById("form-project").appendChild(input);
                     });
                 </script>
-             <?php endif; ?>
+             <?php endif; ?> -->
         <div class="control-group">
             <div class="controls">
                 <button type="submit" class="validate btn btn-primary"><?php echo JText::_('JSUBMIT'); ?></button>

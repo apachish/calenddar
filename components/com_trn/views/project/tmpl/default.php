@@ -20,16 +20,16 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_trn' . $th
 <?php if ($this->item) : ?>
 
     <div class="item_fields">
-        <table class="table">
+        <table class="table" style="text-align: right;">
             <tr>
-			<th><?php echo JText::_('COM_TRN_FORM_LBL_PROJECT_ID'); ?></th>
-			<td><?php echo $this->item->id; ?></td>
-</tr>
-<tr>
+				<th><?php echo JText::_('COM_TRN_FORM_LBL_PROJECT_ID'); ?></th>
+				<td><?php echo $this->item->id; ?></td>
+			</tr>
+<!-- <tr>
 			<th><?php echo JText::_('COM_TRN_FORM_LBL_PROJECT_STATE'); ?></th>
 			<td>
 			<i class="icon-<?php echo ($this->item->state == 1) ? 'publish' : 'unpublish'; ?>"></i></td>
-</tr>
+</tr> -->
 <tr>
 			<th><?php echo JText::_('COM_TRN_FORM_LBL_PROJECT_CREATED_BY'); ?></th>
 			<td><?php echo $this->item->created_by_name; ?></td>
@@ -46,13 +46,13 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_trn' . $th
 			<th><?php echo JText::_('COM_TRN_FORM_LBL_PROJECT_NAME_PROJECT'); ?></th>
 			<td><?php echo $this->item->name_project; ?></td>
 </tr>
-<tr>
+<!-- <tr>
 			<th><?php echo JText::_('COM_TRN_FORM_LBL_PROJECT_EXTERA_FILDE'); ?></th>
 			<td><?php echo $this->item->extera_filde; ?></td>
-</tr>
+</tr> -->
 <tr>
 			<th><?php echo JText::_('COM_TRN_FORM_LBL_PROJECT_TYPE_PROJECT'); ?></th>
-			<td><?php echo $this->item->type_project; ?></td>
+			<td><?php echo $this->get_name_project($this->item->type_project); ?></td>
 </tr>
 
         </table>
